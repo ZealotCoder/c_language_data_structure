@@ -141,7 +141,7 @@ int singeled_Linked_List_Insert()
     printf("请选择数据插入位置!\n");
     printf("1.链表头部\n");
     printf("2.链表指定位置!\n");
-    printf("3.链表头部!\n");
+    printf("3.链表尾部!\n");
     unsigned int operation_Insert = 1;
     scanf("%u", &operation_Insert);
     switch (operation_Insert)
@@ -179,8 +179,107 @@ int singeled_Linked_List_Insert()
         case 2:     //链表指定位置插入
             {
                 /* code */
-                //根据学号顺序增序的规则插入
+                //根据指定的位置n6, 将新插入的节点插入链表当做第n+1个节点
+                ptr = (struct student_Node *)malloc(sizeof(struct student_Node *));
+                unsigned studeng_ID = 0;
+                float student_Score = 0.0;
+                printf("请输入学号:\n");
+                scanf("%u",&studeng_ID);
+                printf("请输入分数:\n");
+                scanf("%f",&student_Score);
+                ptr->student_ID = studeng_ID;
+                ptr->student_Score = student_Score;
+
+                unsigned int target_index = 0;
+                printf("请输入目标节点位置:\n");
+                scanf("%u",&target_index);
+
+                struct student_Node *pre_Node, *current_Node;
+                unsigned int node_num = 0;
+                current_Node = head;
+
+                if (head == NULL || target_index == 1)
+                {
+                    //如果当前链表为空, 则直接插入, 无需再查找位置
+                    ptr->next = head;
+                    head = ptr;
+                    ptr = NULL;
+                    break;
+                }
+
+                //struct student_Node *pre_Node, *current_Node;
+                //unsigned int node_num = 0;
+                //current_Node = head;
+                do
+                {
+                    /* code */
+                    node_num++;
+                    if (target_index == node_num)
+                    {
+                        /* code */
+                        //pre_Node = current_Node;
+                        if (node_num == 1)
+                        {
+                            /* code */
+                            //在头部插入
+                            ptr->next = head;
+                            head = ptr;
+                            break;
+                        }
+
+
+                        pre_Node->next = ptr;
+                        ptr->next = current_Node;
+                        break;
+                    }
+                    pre_Node = current_Node;
+                    current_Node = current_Node->next;
+                } while (NULL != current_Node);
                 
+                if (target_index > node_num)
+                {
+                    /* code */
+                    //在链表尾部插入
+                    pre_Node->next = ptr;
+                    ptr->next = NULL;
+                    break;
+                }
+#if 0
+                for (current_Node = head; current_Node!= NULL; current_Node = current_Node->next)
+                {
+                    /* code */
+                    //统计节点个数
+                    node_num++;
+                    if (node_num == 1 && target_index == 1)
+                    {
+                        /* code */
+                        //链表只有一个节点, 并且要求插入到第一位
+                        pre_Node = NULL;
+                        ptr->next = current_Node;
+                        head = ptr;
+                        break;
+
+                    }
+                    
+                    if (node_num == target_index)
+                    {
+                        /* code */
+                        //找到了目标位置, 进行插入,插入完成立即挑出循环
+                        pre_Node->next = ptr;
+                        ptr->next = current_Node;
+                        break;
+                    }
+                    pre_Node = current_Node;
+                    
+                }
+                if (target_index > node_num)
+                {
+                    /* code */
+                    //目标位置不存在在当前链表中,只能插入到链表尾部
+                    current_Node->next = ptr;
+                    ptr->next = NULL;
+                }
+#endif
                 break;
             }
         case 3:     //链表尾部插入
@@ -202,18 +301,19 @@ int singeled_Linked_List_Insert()
                     //如果头结点为空, 那么这个节点就会被放在头结点位置
                     head = ptr;
                     ptr = NULL;
+                    break;
                 }
                 else
                 {
-                    struct student_Node *temp;
-                    for (temp = head; temp->next == NULL; temp = temp->next)
+                    struct student_Node *temp = head;
+                    while (NULL != temp->next)
                     {
                         /* code */
-                        //如果头结点不为空, 那么先找到 为节点, 然后将为节点的next指向当前新增节点
-                        temp->next = ptr;
-                        ptr = NULL;
+                        //先找到最后一个节点
+                        temp = temp->next;
                     }
-                    
+                    temp->next = ptr;
+                    ptr = NULL;
                 }
                 
                 break;

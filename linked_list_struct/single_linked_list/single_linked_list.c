@@ -3,18 +3,21 @@
 struct student_Node
 {
     unsigned int student_ID;
-    unsigned int student_Score;
+    float student_Score;
     struct student_Node *next;
+};
 
-} *head, *tail;
+struct student_Node *head;
+struct student_Node *ptr;
 
-#define Linked_List_init 1
-#define Linked_List_insert 2
-#define Linked_List_delete 3
+#define Linked_List_Init 1
+#define Linked_List_Insert 2
+#define Linked_List_Delete 3
 #define Linked_List_Edit 4
-#define list_List_Query 5
+#define Linked_List_Query 5
 #define Linked_List_Print 6
-#define Linked_List_Quit 7
+#define Linked_List_Destroy 7
+#define Linked_List_Quit 8
 
 #define TRUE 1
 #define FALSE 0
@@ -27,6 +30,7 @@ int singeled_Linked_List_Delete();
 int signeled_Linked_List_Query();
 int singeled_Linked_List_Edit();
 int singeled_Linked_List_Print();
+int singeled_Linked_List_Destroy();
 int singeled_Linked_List_Quit();
 
 int main()
@@ -47,19 +51,19 @@ int main()
         scanf("%u",&operation);
         switch (operation)
         {
-            case Linked_List_init:
+            case Linked_List_Init:
                 {
                     /* code */
                     signeled_Linked_List_Init();
                     break;
                 }
-            case Linked_List_insert:
+            case Linked_List_Insert:
                 {
                     /* code */
                     singeled_Linked_List_Insert();
                     break;
                 }
-            case Linked_List_delete:
+            case Linked_List_Delete:
                 {
                     singeled_Linked_List_Delete();
                     break;
@@ -69,7 +73,7 @@ int main()
                     singeled_Linked_List_Edit();
                     break;
                 }
-            case list_List_Query:
+            case Linked_List_Query:
                 {
                     signeled_Linked_List_Query();
                     break;
@@ -77,6 +81,11 @@ int main()
             case Linked_List_Print:
                 {
                     singeled_Linked_List_Print();
+                    break;
+                }
+            case Linked_List_Destroy:
+                {
+                    singeled_Linked_List_Destroy();
                     break;
                 }
             case Linked_List_Quit:
@@ -105,6 +114,21 @@ int main()
 
 int signeled_Linked_List_Init()
 {
+    //链表初始化, 既是插入头结点
+    //struct student_Node *ptr;
+    ptr = (struct student_Node *)malloc(sizeof(struct student_Node *));
+    ptr->student_ID = 419030210;
+    ptr->student_Score = 99.99f;
+    ptr->next = NULL;
+    head = ptr;
+
+
+    //再插入一个数据
+    ptr= (struct student_Node *)malloc(sizeof(struct student_Node *));
+    ptr->next = NULL;
+    ptr->student_ID = 419030280;
+    ptr->student_Score = 55.55;
+    head->next = ptr;
     printf("链表初始化完成!\n");
     return 0;
 }
@@ -142,10 +166,23 @@ int singeled_Linked_List_Edit()
 
 int singeled_Linked_List_Print()
 {
-    printf("链表节点打印完成!\n");
-    return 0; 
+    printf("***********************链表节点打印开始!**************************\n");
+    for ( ptr = head ; ptr != NULL ; ptr = ptr->next)
+    {
+        printf("studeng ID = %u, student Score = %f\n", ptr->student_ID,ptr->student_Score);
+    }
+    
+    printf("***********************链表节点打印结束!**************************\n\n");
     return 0;
     
+}
+
+int singeled_Linked_List_Destroy()
+{
+    printf("链表删除完成!\n");
+    return 0; 
+    return 0;
+
 }
 
 int singeled_Linked_List_Quit()

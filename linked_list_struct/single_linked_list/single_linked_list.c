@@ -116,6 +116,8 @@ int signeled_Linked_List_Init()
 {
     //链表初始化, 既是插入头结点
     //struct student_Node *ptr;
+    printf("***********************链表节点初始化开始!**************************\n");
+    printf("demo数据,请勿当真,仅做测试使用\n");
     ptr = (struct student_Node *)malloc(sizeof(struct student_Node *));
     ptr->student_ID = 419030210;
     ptr->student_Score = 99.99f;
@@ -129,37 +131,120 @@ int signeled_Linked_List_Init()
     ptr->student_ID = 419030280;
     ptr->student_Score = 55.55;
     head->next = ptr;
-    printf("链表初始化完成!\n");
+    printf("***********************链表节点初始化结束!**************************\n");
     return 0;
 }
 
 int singeled_Linked_List_Insert()
 {
-    printf("链表节点插入完成!\n");
-    return 0; 
+    printf("***********************链表节点插入开始!**************************\n");
+    printf("请选择数据插入位置!\n");
+    printf("1.链表头部\n");
+    printf("2.链表指定位置!\n");
+    printf("3.链表头部!\n");
+    unsigned int operation_Insert = 1;
+    scanf("%u", &operation_Insert);
+    switch (operation_Insert)
+    {
+        case 1:     //链表头部插入
+            {
+                /* code */
+                ptr = (struct student_Node *)malloc(sizeof(struct student_Node *));
+                unsigned studeng_ID = 0;
+                float student_Score = 0.0;
+                printf("请输入学号:\n");
+                scanf("%u",&studeng_ID);
+                printf("请输入分数:\n");
+                scanf("%f",&student_Score);
+                ptr->student_ID = studeng_ID;
+                ptr->student_Score = student_Score;
+                ptr->next = NULL;
+                if (head==NULL)
+                {
+                    /* code */
+                    //如果头结点为空,则当前插入的节点成为头结点
+                    head = ptr;
+                    ptr = NULL;
+                }
+                else 
+                {
+                    /* code */
+                    //如果头姐点不是空的,那需要将当前节点的next指向原先的头结点
+                    ptr->next = head;
+                    head = ptr;
+                    ptr = NULL;
+                }
+                break;
+            }
+        case 2:     //链表指定位置插入
+            {
+                /* code */
+                //根据学号顺序增序的规则插入
+                
+                break;
+            }
+        case 3:     //链表尾部插入
+            {
+                /* code */
+                ptr = (struct student_Node *)malloc(sizeof(struct student_Node *));
+                unsigned studeng_ID = 0;
+                float student_Score = 0.0;
+                printf("请输入学号:\n");
+                scanf("%u",&studeng_ID);
+                printf("请输入分数:\n");
+                scanf("%f",&student_Score);
+                ptr->student_ID = studeng_ID;
+                ptr->student_Score = student_Score;
+                ptr->next = NULL;
+                if (head==NULL)
+                {
+                    /* code */
+                    //如果头结点为空, 那么这个节点就会被放在头结点位置
+                    head = ptr;
+                    ptr = NULL;
+                }
+                else
+                {
+                    struct student_Node *temp;
+                    for (temp = head; temp->next == NULL; temp = temp->next)
+                    {
+                        /* code */
+                        //如果头结点不为空, 那么先找到 为节点, 然后将为节点的next指向当前新增节点
+                        temp->next = ptr;
+                        ptr = NULL;
+                    }
+                    
+                }
+                
+                break;
+            }
+        default:
+            break;
+    }
+    printf("***********************链表节点插入结束!**************************\n");
     return 0;
     
 }
 
 int singeled_Linked_List_Delete()
 {
-    printf("链表节点删除完成!\n");
-    return 0; 
+    printf("***********************链表节点删除开始!**************************\n");
+    printf("***********************链表节点删除结束!**************************\n");
     return 0;
     
 }
 int signeled_Linked_List_Query()
 {
-    printf("链表节点查询完成!\n");
-    return 0; 
+    printf("***********************链表节点查询开始!**************************\n");
+    printf("***********************链表节点查询结束!**************************\n");
     return 0;
     
 }
 
 int singeled_Linked_List_Edit()
 {
-    printf("链表节点编辑完成!\n");
-    return 0; 
+    printf("***********************链表节点编辑开始!**************************\n");
+    printf("***********************链表节点编辑结束!**************************\n");
     return 0;
     
 }
@@ -167,6 +252,13 @@ int singeled_Linked_List_Edit()
 int singeled_Linked_List_Print()
 {
     printf("***********************链表节点打印开始!**************************\n");
+    if (head == NULL)
+    {
+        printf("当前链表为空!\n");
+        printf("***********************链表节点打印结束!**************************\n\n");
+        return 0;
+    }
+    
     for ( ptr = head ; ptr != NULL ; ptr = ptr->next)
     {
         printf("studeng ID = %u, student Score = %f\n", ptr->student_ID,ptr->student_Score);

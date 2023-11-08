@@ -207,9 +207,6 @@ int singeled_Linked_List_Insert()
                     break;
                 }
 
-                //struct student_Node *pre_Node, *current_Node;
-                //unsigned int node_num = 0;
-                //current_Node = head;
                 do
                 {
                     /* code */
@@ -244,42 +241,6 @@ int singeled_Linked_List_Insert()
                     ptr->next = NULL;
                     break;
                 }
-#if 0
-                for (current_Node = head; current_Node!= NULL; current_Node = current_Node->next)
-                {
-                    /* code */
-                    //统计节点个数
-                    node_num++;
-                    if (node_num == 1 && target_index == 1)
-                    {
-                        /* code */
-                        //链表只有一个节点, 并且要求插入到第一位
-                        pre_Node = NULL;
-                        ptr->next = current_Node;
-                        head = ptr;
-                        break;
-
-                    }
-                    
-                    if (node_num == target_index)
-                    {
-                        /* code */
-                        //找到了目标位置, 进行插入,插入完成立即挑出循环
-                        pre_Node->next = ptr;
-                        ptr->next = current_Node;
-                        break;
-                    }
-                    pre_Node = current_Node;
-                    
-                }
-                if (target_index > node_num)
-                {
-                    /* code */
-                    //目标位置不存在在当前链表中,只能插入到链表尾部
-                    current_Node->next = ptr;
-                    ptr->next = NULL;
-                }
-#endif
                 break;
             }
         case 3:     //链表尾部插入

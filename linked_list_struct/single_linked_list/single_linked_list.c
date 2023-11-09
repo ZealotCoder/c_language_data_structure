@@ -19,6 +19,10 @@ struct student_Node *ptr;
 #define Linked_List_Destroy 7
 #define Linked_List_Quit 8
 
+#define Linked_List_HEAD_Node 1
+#define Linked_List_Mid_Node 2
+#define Linked_List_Tail_Node 3
+
 #define TRUE 1
 #define FALSE 0
 
@@ -54,13 +58,11 @@ int main()
         {
             case Linked_List_Init:
                 {
-                    /* code */
                     signeled_Linked_List_Init();
                     break;
                 }
             case Linked_List_Insert:
                 {
-                    /* code */
                     singeled_Linked_List_Insert();
                     break;
                 }
@@ -93,7 +95,6 @@ int main()
                 {
                     singeled_Linked_List_Quit();
                 }
-                /* code */
                 g_global_exit = 1;
                 break;
             default:
@@ -147,7 +148,7 @@ int singeled_Linked_List_Insert()
     scanf("%u", &operation_Insert);
     switch (operation_Insert)
     {
-        case 1:     //链表头部插入
+        case Linked_List_HEAD_Node:     //链表头部插入
             {
                 /* code */
                 ptr = (struct student_Node *)malloc(sizeof(struct student_Node *));
@@ -177,7 +178,7 @@ int singeled_Linked_List_Insert()
                 }
                 break;
             }
-        case 2:     //链表指定位置插入
+        case Linked_List_Mid_Node:     //链表指定位置插入
             {
                 /* code */
                 //根据指定的位置n6, 将新插入的节点插入链表当做第n+1个节点
@@ -244,7 +245,7 @@ int singeled_Linked_List_Insert()
                 }
                 break;
             }
-        case 3:     //链表尾部插入
+        case Linked_List_Tail_Node:     //链表尾部插入
             {
                 /* code */
                 ptr = (struct student_Node *)malloc(sizeof(struct student_Node *));
@@ -291,6 +292,36 @@ int singeled_Linked_List_Insert()
 int singeled_Linked_List_Delete()
 {
     printf("***********************链表节点删除开始!**************************\n");
+    printf("请选择刪除的节点的位置!\n");
+    printf("1.链表头部\n");
+    printf("2.链表指定位置!\n");
+    printf("3.链表尾部!\n");
+    unsigned int operation = 0;
+    scanf("%u",&operation);
+    switch (operation)
+    {
+        case Linked_List_HEAD_Node:
+            {
+                ptr = head;
+                head = head->next;
+                free(ptr);  //奇怪的问题, 执行到这里, 就卡主了, 没有什么报错!!!
+                break;
+            }
+        case Linked_List_Mid_Node:
+            {
+                /* code */
+                break;
+            }
+        case Linked_List_Tail_Node:
+            {
+                break;
+            }
+        default:
+            {
+                /* code */
+                break;
+            }
+    }
     printf("***********************链表节点删除结束!**************************\n");
     return 0;
     

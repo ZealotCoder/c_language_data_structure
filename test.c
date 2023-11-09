@@ -20,3 +20,11 @@ int main()
 //https://www.zhihu.com/question/30315894
 //https://blog.csdn.net/5hongbing/article/details/77620695
 //https://blog.csdn.net/littlelittleR/article/details/121438006
+
+/*
+//解决gitignore不生效问题
+git rm -r --cached .
+git add .
+git commit -m "update .gitignore"  // windows使用的命令时，需要使用双引号
+
+*/

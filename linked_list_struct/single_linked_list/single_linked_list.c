@@ -119,7 +119,7 @@ int signeled_Linked_List_Init()
     //链表初始化, 既是插入头结点
     //struct student_Node *ptr;
     printf("***********************链表节点初始化开始!**************************\n");
-    printf("demo数据,请勿当真,仅做测试使用\n");
+    //printf("demo数据,请勿当真,仅做测试使用\n");
     ptr = (struct student_Node *)malloc(sizeof(struct student_Node *));
     ptr->student_ID = 419030210;
     ptr->student_Score = 99.99f;
@@ -132,7 +132,7 @@ int signeled_Linked_List_Init()
     ptr->next = NULL;
     ptr->student_ID = 419030280;
     ptr->student_Score = 55.55;
-    head->next = ptr;
+    head->next= ptr;
     printf("***********************链表节点初始化结束!**************************\n");
     return 0;
 }
@@ -292,12 +292,9 @@ int singeled_Linked_List_Insert()
 int singeled_Linked_List_Delete()
 {
     printf("***********************链表节点删除开始!**************************\n");
-    printf("请选择刪除的节点的位置!\n");
-    printf("1.链表头部\n");
-    printf("2.链表指定位置!\n");
-    printf("3.链表尾部!\n");
+    printf("请选择刪除的节点的位置!(1.链表头部,2.链表指定位置,3.链表尾部)\n");
     unsigned int operation = 0;
-    scanf("%u",&operation);
+    scanf("%d",&operation);
     switch (operation)
     {
         case Linked_List_HEAD_Node:

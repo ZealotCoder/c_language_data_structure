@@ -46,7 +46,8 @@ int main()
         printf("\t\t\t\t4.单链表编辑数据:\t\t\t\t\n");
         printf("\t\t\t\t5.单链表查询数据:\t\t\t\t\n");
         printf("\t\t\t\t6.单链表打印数据:\t\t\t\t\n");
-        printf("\t\t\t\t7.退出:\t\t\t\n\n");
+        printf("\t\t\t\t7.单链表整体删除:\t\t\t\t\n");
+        printf("\t\t\t\t8.退出:\t\t\t\n\n");
         printf("\t\t\t\t请选择你的操作:\t\t\t\t\n");
         scanf("%u",&operation);
         switch (operation)

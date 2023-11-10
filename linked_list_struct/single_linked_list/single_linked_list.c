@@ -1,14 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-struct student_Node
+struct Node
 {
-    unsigned int student_ID;
-    float student_Score;
-    struct student_Node *next;
+    unsigned int data_field_1;
+    struct Node *next;
 };
 
-struct student_Node *head;
-struct student_Node *ptr;
+struct Node *head;
+struct Node *ptr;
 
 #define Linked_List_Init 1
 #define Linked_List_Insert 2
@@ -41,7 +40,7 @@ int main()
 {
     //printf("中文输出测试\n");
     unsigned int operation = 0;
-    printf("\t\t\t\t欢迎来到单链表(学生数据)学习部分!\t\t\t\t\n\n");
+    printf("\t\t\t\t欢迎来到单链表学习部分!\t\t\t\t\n\n");
     do
     {
         printf("\t\t\t\t1.初始化单链表:\t\t\t\t\n");
@@ -120,19 +119,24 @@ int signeled_Linked_List_Init()
     //struct student_Node *ptr;
     printf("***********************链表节点初始化开始!**************************\n");
     //printf("demo数据,请勿当真,仅做测试使用\n");
-    ptr = (struct student_Node *)malloc(sizeof(struct student_Node *));
-    ptr->student_ID = 419030210;
-    ptr->student_Score = 99.99f;
+    ptr = (struct Node *)malloc(sizeof(struct Node *));
+    ptr->data_field_1 = 419000;
     ptr->next = NULL;
     head = ptr;
 
 
-    //再插入一个数据
-    ptr= (struct student_Node *)malloc(sizeof(struct student_Node *));
+    //插入一个数据
+    ptr= (struct Node *)malloc(sizeof(struct Node *));
     ptr->next = NULL;
-    ptr->student_ID = 419030280;
-    ptr->student_Score = 55.55;
+    ptr->data_field_1 = 419010;
     head->next= ptr;
+
+    //插入一个数据
+    ptr = (struct Node *)malloc(sizeof(struct Node*));
+    ptr->next = NULL;
+    ptr->data_field_1 = 416030;
+    head->next->next = ptr;
+    ptr = NULL;
     printf("***********************链表节点初始化结束!**************************\n");
     return 0;
 }
@@ -140,124 +144,71 @@ int signeled_Linked_List_Init()
 int singeled_Linked_List_Insert()
 {
     printf("***********************链表节点插入开始!**************************\n");
-    printf("请选择数据插入位置!\n");
-    printf("1.链表头部\n");
-    printf("2.链表指定位置!\n");
-    printf("3.链表尾部!\n");
-    unsigned int operation_Insert = 1;
+
+    printf("请选择数据插入位置!(1:头部,2:中间(插入到指定节点的下一个位置),3:尾部)\n");
+    unsigned int operation_Insert = 0;
     scanf("%u", &operation_Insert);
+
+    ptr = (struct Node *)malloc(sizeof(struct Node *));
+    if (ptr)
+    {
+        /* code */
+        unsigned data_Field = 0;
+        printf("请输入节点数据:\n");
+        scanf("%u",&data_Field);
+        ptr->data_field_1 = data_Field;
+        ptr->next = NULL;
+    }
+    else
+    {
+        printf("内存申请失败! 单链表数据插入中断!\n");
+        return 0;
+    }
+
     switch (operation_Insert)
     {
         case Linked_List_HEAD_Node:     //链表头部插入
             {
-                /* code */
-                ptr = (struct student_Node *)malloc(sizeof(struct student_Node *));
-                unsigned studeng_ID = 0;
-                float student_Score = 0.0;
-                printf("请输入学号:\n");
-                scanf("%u",&studeng_ID);
-                printf("请输入分数:\n");
-                scanf("%f",&student_Score);
-                ptr->student_ID = studeng_ID;
-                ptr->student_Score = student_Score;
-                ptr->next = NULL;
                 if (head==NULL)
                 {
-                    /* code */
-                    //如果头结点为空,则当前插入的节点成为头结点
+                    //如果链表为空,则当前插入的节点成为头结点
                     head = ptr;
-                    ptr = NULL;
                 }
                 else 
                 {
-                    /* code */
-                    //如果头姐点不是空的,那需要将当前节点的next指向原先的头结点
+                    //如果链表不为空,那需要将当前节点的next指向原先的头结点
                     ptr->next = head;
                     head = ptr;
-                    ptr = NULL;
                 }
                 break;
             }
         case Linked_List_Mid_Node:     //链表指定位置插入
             {
-                /* code */
-                //根据指定的位置n6, 将新插入的节点插入链表当做第n+1个节点
-                ptr = (struct student_Node *)malloc(sizeof(struct student_Node *));
-                unsigned studeng_ID = 0;
-                float student_Score = 0.0;
-                printf("请输入学号:\n");
-                scanf("%u",&studeng_ID);
-                printf("请输入分数:\n");
-                scanf("%f",&student_Score);
-                ptr->student_ID = studeng_ID;
-                ptr->student_Score = student_Score;
-
                 unsigned int target_index = 0;
-                printf("请输入目标节点位置:\n");
-                scanf("%u",&target_index);
-
-                struct student_Node *pre_Node, *current_Node;
-                unsigned int node_num = 0;
-                current_Node = head;
-
-                if (head == NULL || target_index == 1)
+                printf("请输入节点位置:\n");
+                scanf("%u",&target_index);//
+                struct Node *temp = head;
+                for (int i = 0; i < target_index-1; i++)
                 {
-                    //如果当前链表为空, 则直接插入, 无需再查找位置
-                    ptr->next = head;
-                    head = ptr;
-                    ptr = NULL;
-                    break;
-                }
-
-                do
-                {
-                    /* code */
-                    node_num++;
-                    if (target_index == node_num)
+                    // 这里是为了找到第target_index个节点, 然后将新节点当做target_index节点的下一个节点, 新节点的next指向原本target_index节点的next;
+                    if (temp)
                     {
-                        /* code */
-                        //pre_Node = current_Node;
-                        if (node_num == 1)
-                        {
-                            /* code */
-                            //在头部插入
-                            ptr->next = head;
-                            head = ptr;
-                            break;
-                        }
-
-
-                        pre_Node->next = ptr;
-                        ptr->next = current_Node;
-                        break;
+                        temp = temp->next;
                     }
-                    pre_Node = current_Node;
-                    current_Node = current_Node->next;
-                } while (NULL != current_Node);
-                
-                if (target_index > node_num)
-                {
-                    /* code */
-                    //在链表尾部插入
-                    pre_Node->next = ptr;
-                    ptr->next = NULL;
-                    break;
+                    else
+                    {
+                        printf("该位置不存在!已超出当前链表长度!\n节点数据将被插入到链表尾部!\n");
+                        return 0;
+                    }
+                    
                 }
+                ptr->next = temp->next;
+                temp->next = ptr;
+
                 break;
             }
         case Linked_List_Tail_Node:     //链表尾部插入
             {
-                /* code */
-                ptr = (struct student_Node *)malloc(sizeof(struct student_Node *));
-                unsigned studeng_ID = 0;
-                float student_Score = 0.0;
-                printf("请输入学号:\n");
-                scanf("%u",&studeng_ID);
-                printf("请输入分数:\n");
-                scanf("%f",&student_Score);
-                ptr->student_ID = studeng_ID;
-                ptr->student_Score = student_Score;
-                ptr->next = NULL;
                 if (head==NULL)
                 {
                     /* code */
@@ -268,21 +219,22 @@ int singeled_Linked_List_Insert()
                 }
                 else
                 {
-                    struct student_Node *temp = head;
+                    struct Node *temp = head;
                     while (NULL != temp->next)
                     {
-                        /* code */
                         //先找到最后一个节点
                         temp = temp->next;
                     }
                     temp->next = ptr;
-                    ptr = NULL;
                 }
-                
                 break;
             }
         default:
-            break;
+            {
+                printf("插入位置选择无效! 节点插入操作被中断!\n");
+                break;
+            }
+
     }
     printf("***********************链表节点插入结束!**************************\n");
     return 0;

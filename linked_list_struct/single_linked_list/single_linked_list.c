@@ -116,9 +116,7 @@ int main()
 int signeled_Linked_List_Init()
 {
     //链表初始化, 既是插入头结点
-    //struct student_Node *ptr;
     printf("***********************链表节点初始化开始!**************************\n");
-    //printf("demo数据,请勿当真,仅做测试使用\n");
     ptr = (struct Node *)malloc(sizeof(struct Node *));
     ptr->data_field_1 = 419000;
     ptr->next = NULL;
@@ -145,7 +143,7 @@ int singeled_Linked_List_Insert()
 {
     printf("***********************链表节点插入开始!**************************\n");
 
-    printf("请选择数据插入位置!(1:头部,2:中间(插入到指定节点的下一个位置),3:尾部)\n");
+    printf("请选择数据插入位置!(1:头部    2:指定位置(指定位置的下一个节点)    3:尾部)\n");
     unsigned int operation_Insert = 0;
     scanf("%u", &operation_Insert);
 
@@ -244,7 +242,7 @@ int singeled_Linked_List_Insert()
 int singeled_Linked_List_Delete()
 {
     printf("***********************链表节点删除开始!**************************\n");
-    printf("请选择刪除的节点的位置!(1.链表头部,2.链表指定位置,3.链表尾部)\n");
+    printf("请选择刪除的节点的位置!(1:头部    2:指定位置    3:尾部)\n");
     unsigned int operation = 0;
     scanf("%d",&operation);
     switch (operation)
@@ -303,7 +301,7 @@ int singeled_Linked_List_Print()
     
     for ( ptr = head ; ptr != NULL ; ptr = ptr->next)
     {
-        printf("studeng ID = %u, student Score = %f\n", ptr->student_ID,ptr->student_Score);
+        printf("data_field_1 = %u\n", ptr->data_field_1);
     }
     
     printf("***********************链表节点打印结束!**************************\n\n");
@@ -315,14 +313,10 @@ int singeled_Linked_List_Destroy()
 {
     printf("链表删除完成!\n");
     return 0; 
-    return 0;
-
 }
 
 int singeled_Linked_List_Quit()
 {
     printf("即将退出单链表学习部分, 欢迎下次再来!\n");
     return 0; 
-    return 0;
-
 }

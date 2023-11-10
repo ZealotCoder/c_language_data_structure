@@ -134,7 +134,6 @@ int signeled_Linked_List_Init()
     ptr->next = NULL;
     ptr->data_field_1 = 416030;
     head->next->next = ptr;
-    ptr = NULL;
     printf("***********************链表节点初始化结束!**************************\n");
     return 0;
 }
@@ -243,15 +242,16 @@ int singeled_Linked_List_Delete()
 {
     printf("***********************链表节点删除开始!**************************\n");
     printf("请选择刪除的节点的位置!(1:头部    2:指定位置    3:尾部)\n");
-    unsigned int operation = 0;
-    scanf("%d",&operation);
-    switch (operation)
+    unsigned int operation_Delete = 0;
+    scanf("%d",&operation_Delete);
+    switch (operation_Delete)
     {
         case Linked_List_HEAD_Node:
             {
                 ptr = head;
-                head = head->next;
+                head = ptr->next;
                 free(ptr);  //奇怪的问题, 执行到这里, 就卡主了, 没有什么报错!!!
+                printf("删除第一个节点成功!\n");
                 break;
             }
         case Linked_List_Mid_Node:

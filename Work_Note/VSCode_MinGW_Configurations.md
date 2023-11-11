@@ -34,119 +34,126 @@ Git:    Git [Git.Git] 版本 2.42.0.2
         g++ --version
         gdb --version
 3. 配置VSCode & MinGW的开发环境，（这是保证代码能编译并且最终跑起来， 但是她不会生成exe文件， 无法进行gdb调试）
-    3.1 创建空文件夹， 并且在VSCode中打开该文件夹， 创建test.c 文件， 
-    3.2 在VScode中 Ctrl + Shift + P 调出命令面板，输入 C/C++ ，选择 Edit Configurations(UI) 进入 IntelliSense配置
-        点击c_cpp_properties.json文件币进行编辑以下内容：
+    3.1 创建空文件夹， 并且在VSCode中打开该文件夹， 创建test.c 文件，
+    3.2 在VScode中 Ctrl + Shift + P 调出命令面板，
+        输入 C/C++ ，选择 Edit Configurations(UI) 进入 IntelliSense配置;
+        点击c_cpp_properties.json文件进行编辑以下内容：
+    ```
+        {
+            "configurations": [
+                {
+                    "name": "MinGW_C",
+                    "includePath": [
+                        "c:/C_language_data_structure/**"
+                    ],
+                    "defines": [
+                        "_DEBUG",
+                        "UNICODE",
+                        "_UNICODE"
+                    ],
+                    "windowsSdkVersion": "10.0.22000.0",
+                    "compilerPath": "C:/mingw64/bin/gcc.exe",
+                    "cStandard": "c17",
+                    "cppStandard": "c++17",
+                    "intelliSenseMode": "gcc-x64"
+                },
+                {
+                    "name": "MinGW_CPP",
+                    "includePath": [
+                        "${workspaceFolder}/**"
+                    ],
+                    "defines": [
+                        "_DEBUG",
+                        "UNICODE",
+                        "_UNICODE"
+                    ],
+                    "windowsSdkVersion": "10.0.22000.0",
+                    "compilerPath": "C:/mingw64/bin/g++.exe",
+                    "cStandard": "c17",
+                    "cppStandard": "c++17",
+                    "intelliSenseMode": "gcc-x64"
+                }
+            ],
+            "version": 4
+        }
+    ```
+
+
+3.3 配置构建任务（这是为了方便后边的gdb调试）
+    Ctrl+Shift+P 调出命令面板，输入 tasks ，选择 Tasks:Configure Default Build Task
+    选择 C/C++: g++.exe 生成活动文件，此时会生成 ***.exe文件
+```
             {
-                "configurations": [
+                "tasks": [
                     {
-                        "name": "MinGW_C",      //C语言编译环境
-                        "includePath": [
-                            "c:/C_language_data_structure/**"
+                        "type": "cppbuild",
+                        "label": "C/C++: g++.exe 生成活动文件",
+                        "command": "C:/mingw64/bin/g++.exe",
+                        "args": [
+                            "-fdiagnostics-color=always",
+                            "-g",
+                            "${file}",
+                            "-o",
+                            "${fileDirname}\\${fileBasenameNoExtension}.exe"
                         ],
-                        "defines": [
-                            "_DEBUG",
-                            "UNICODE",
-                            "_UNICODE"
+                        "options": {
+                            "cwd": "C:/mingw64/bin"
+                        },
+                        "problemMatcher": [
+                            "$gcc"
                         ],
-                        "windowsSdkVersion": "10.0.22000.0",
-                        "compilerPath": "C:/mingw64/bin/gcc.exe",
-                        "cStandard": "c17",
-                        "cppStandard": "c++17",
-                        "intelliSenseMode": "gcc-x64"
-                    },
-                    {
-                        "name": "MinGW_CPP",        ////C++语言编译环境
-                        "includePath": [
-                            "${workspaceFolder}/**"
-                        ],
-                        "defines": [
-                            "_DEBUG",
-                            "UNICODE",
-                            "_UNICODE"
-                        ],
-                        "windowsSdkVersion": "10.0.22000.0",
-                        "compilerPath": "C:/mingw64/bin/g++.exe",
-                        "cStandard": "c17",
-                        "cppStandard": "c++17",
-                        "intelliSenseMode": "gcc-x64"
+                        "group": {
+                            "kind": "build",
+                            "isDefault": true
+                        },
+                        "detail": "调试器生成的任务。"
                     }
                 ],
-                "version": 4
+                "version": "2.0.0"
             }
+```
 
-        配置构建任务（这是为了方便后边的gdb调试）
-            Ctrl+Shift+P 调出命令面板，输入 tasks ，选择 Tasks:Configure Default Build Task
-                选择 C/C++: g++.exe 生成活动文件，此时会生成 ***.exe文件
-                    {
-                        "tasks": [
-                            {
-                                "type": "cppbuild",
-                                "label": "C/C++: g++.exe 生成活动文件",
-                                "command": "C:/mingw64/bin/g++.exe",
-                                "args": [
-                                    "-fdiagnostics-color=always",
-                                    "-g",
-                                    "${file}",
-                                    "-o",
-                                    "${fileDirname}\\${fileBasenameNoExtension}.exe"
-                                ],
-                                "options": {
-                                    "cwd": "C:/mingw64/bin"
-                                },
-                                "problemMatcher": [
-                                    "$gcc"
-                                ],
-                                "group": {
-                                    "kind": "build",
-                                    "isDefault": true
-                                },
-                                "detail": "调试器生成的任务。"
-                            }
-                        ],
-                        "version": "2.0.0"
-                    }
+3.4 配置调试设置
+    选择 运行 - 添加配置
+        选择 C++(GDB/LLDB)
+            launch.json文件，若文件内容配置为空，点击右下角添加配置
+```
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) 启动",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/test.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:/mingw64/bin/gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "将反汇编风格设置为 Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        }
 
-        配置调试设置
-            选择 运行 - 添加配置
-                选择 C++(GDB/LLDB)
-                    launch.json文件，若文件内容配置为空，点击右下角添加配置
-                        {
-                            // 使用 IntelliSense 了解相关属性。 
-                            // 悬停以查看现有属性的描述。
-                            // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
-                            "version": "0.2.0",
-                            "configurations": [
+    ]
+}
 
-                                {
-                                    "name": "(gdb) 启动",
-                                    "type": "cppdbg",
-                                    "request": "launch",
-                                    "program": "${workspaceFolder}/test.exe",       //这里改成生成的exe文件名
-                                    "args": [],
-                                    "stopAtEntry": false,
-                                    "cwd": "${fileDirname}",
-                                    "environment": [],
-                                    "externalConsole": false,
-                                    "MIMode": "gdb",
-                                    "miDebuggerPath": "C:/mingw64/bin/gdb.exe",     //这里改成minGW的 gdb.exe文件路径
-                                    "setupCommands": [
-                                        {
-                                            "description": "为 gdb 启用整齐打印",
-                                            "text": "-enable-pretty-printing",
-                                            "ignoreFailures": true
-                                        },
-                                        {
-                                            "description": "将反汇编风格设置为 Intel",
-                                            "text": "-gdb-set disassembly-flavor intel",
-                                            "ignoreFailures": true
-                                        }
-                                    ]
-                                }
-
-                            ]
-                        }
-    至此，VSCode & MInGW的开发环境配置完成了， 后续有补充的话，再更新！！！
+```
 
 4. 安装Git
     从官网下载太慢了， 推荐这个国内的下载站：https://registry.npmmirror.com/binary.html?path=git-for-windows/

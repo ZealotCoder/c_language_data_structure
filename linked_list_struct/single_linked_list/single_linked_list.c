@@ -185,7 +185,8 @@ int singeled_Linked_List_Insert()
                 printf("请输入节点位置:\n");
                 scanf("%u",&target_index);//
                 struct Node *temp = head;
-                for (int i = 0; i < target_index-1; i++)
+int i = 0;
+                for (i = 0; i < target_index-1; i++)
                 {
                     // 这里是为了找到第target_index个节点, 然后将新节点当做target_index节点的下一个节点, 新节点的next指向原本target_index节点的next;
                     if (temp)

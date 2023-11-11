@@ -1,9 +1,9 @@
 #include <stdio.h>
 /*
-¸ÃÎÄ¼ş´úÂëÓÃÓÚÊµÏÖµ¥Á´±í
+è¯¥æ–‡ä»¶ä»£ç ç”¨äºå®ç°å•é“¾è¡¨
 created time:2020.07.24
-@Author£ºJeaten
-@E-mail£ºljt_IT@163.com
+@Authorï¼šJeaten
+@E-mailï¼šljt_IT@163.com
 */
 typedef struct Node{
     int data;
@@ -14,26 +14,26 @@ void main(){
     init();
     int choice=8,num;
     while(choice!=0){
-        printf("+----Á´±í²Ù×÷ÏµÍ³----+\t\t\n");
-        printf("|\t1.²åÈë\t     |\n");
-        printf("|\t2.É¾³ı\t     |\n");
-        printf("|\t3.²éÕÒ\t     |\n");
-        printf("|\t4.Õ¹Ê¾\t     |\n");
-        printf("|\t0.ÍË³ö\t     |\n");
+        printf("+----é“¾è¡¨æ“ä½œç³»ç»Ÿ----+\t\t\n");
+        printf("|\t1.æ’å…¥\t     |\n");
+        printf("|\t2.åˆ é™¤\t     |\n");
+        printf("|\t3.æŸ¥æ‰¾\t     |\n");
+        printf("|\t4.å±•ç¤º\t     |\n");
+        printf("|\t0.é€€å‡º\t     |\n");
         printf("+--------------------+\t\t\n");
-        printf("Çë³öÈëÄúµÄÑ¡Ôñ£º\n");
+        printf("è¯·å‡ºå…¥æ‚¨çš„é€‰æ‹©ï¼š\n");
         scanf("%d",&choice);
         switch(choice){
         case 1:
-            insert_link();//²åÈë²Ù×÷
+            insert_link();//æ’å…¥æ“ä½œ
             break;
         case 2:
-            delete_link(head);//É¾³ı²Ù×÷
+            delete_link(head);//åˆ é™¤æ“ä½œ
             break;
         case 3:
-            printf("Çë³öÈëÄúÒª²éÕÒµÄÊı£º\n");
+            printf("è¯·å‡ºå…¥æ‚¨è¦æŸ¥æ‰¾çš„æ•°ï¼š\n");
             scanf("%d",&num);
-            query_link(head,num);//²éÕÒ²Ù×÷
+            query_link(head,num);//æŸ¥æ‰¾æ“ä½œ
             break;
         case 4:
             print_link(head);
@@ -42,12 +42,12 @@ void main(){
             exit(0);
             break;
         default:
-            printf("ÊäÈëÓĞÎó£¬ÇëÖØĞÂÊäÈë£¡\n");
+            printf("è¾“å…¥æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n");
             break;
         }
     }
 }
-void init(){//³õÊ¼»¯
+void init(){//åˆå§‹åŒ–
     ptr=(node *)malloc(sizeof(node *));
     ptr->data=1;
     ptr->next=NULL;
@@ -68,101 +68,101 @@ void init(){//³õÊ¼»¯
 void print_link(node *ptr){
     int count=1;
     if (ptr==NULL){
-        printf("Á´±íÎª¿Õ!\n");
+        printf("é“¾è¡¨ä¸ºç©º!\n");
     }
     else{
         while(ptr!=NULL){
-            printf("%d-th½áµãµÄÖµ:%d\n",count,ptr->data);
+            printf("%d-thç»“ç‚¹çš„å€¼:%d\n",count,ptr->data);
             ptr=ptr->next;
             count++;
         }
     }
 }
-void insert_link(){//²åÈë²Ù×÷
+void insert_link(){//æ’å…¥æ“ä½œ
     int data=0;
     int choice;
-    printf("ÇëÊäÈë²åÈëÎ»ÖÃ(1:¿ªÍ·,2:ÖĞ¼ä,3:½áÎ²):\n");
+    printf("è¯·è¾“å…¥æ’å…¥ä½ç½®(1:å¼€å¤´,2:ä¸­é—´,3:ç»“å°¾):\n");
     scanf("%d",&choice);
     switch(choice){
-    case 1://´Ó¿ªÊ¼²åÈë
-        printf("ÇëÊäÈëÒª²åÈëµÄÊı¾İ£º");
+    case 1://ä»å¼€å§‹æ’å…¥
+        printf("è¯·è¾“å…¥è¦æ’å…¥çš„æ•°æ®ï¼š");
         scanf("%d",&data);
         ptr=(node *)malloc(sizeof(node *));
         if (ptr){
-            ptr->data=data;//Îª²åÈë½áµã¸³Öµ
-            ptr->next=head;//½«ĞÂ½áµãÁ´½Óµ½Ô­Ê¼½áµãµÄÍ·ÉÏ
-            head=ptr;//¸ü»»Á´±íµÄÍ·
-            printf("½áµãÒÑ²åÈë£¡\n");
+            ptr->data=data;//ä¸ºæ’å…¥ç»“ç‚¹èµ‹å€¼
+            ptr->next=head;//å°†æ–°ç»“ç‚¹é“¾æ¥åˆ°åŸå§‹ç»“ç‚¹çš„å¤´ä¸Š
+            head=ptr;//æ›´æ¢é“¾è¡¨çš„å¤´
+            printf("ç»“ç‚¹å·²æ’å…¥ï¼\n");
         }else{
-            printf("ÉêÇëÄÚ´æÊ§°Ü£¡");
+            printf("ç”³è¯·å†…å­˜å¤±è´¥ï¼");
         }
         break;
-    case 2://´ÓÖĞ¼ä²åÈë
-        printf("ÇëÊäÈëÒª²åÈëµÄÊı¾İ£º");
+    case 2://ä»ä¸­é—´æ’å…¥
+        printf("è¯·è¾“å…¥è¦æ’å…¥çš„æ•°æ®ï¼š");
         scanf("%d",&data);
         ptr=(node *)malloc(sizeof(node *));
         ptr->data=data;
         if(ptr){
             int loc,i;
             node *temp=head;
-            printf("ÇëÊäÈëÒª²åÈëµÄÎ»ÖÃ£¨²åÈë¸ÃÎ»ÖÃÖ®ºó£©£º");
+            printf("è¯·è¾“å…¥è¦æ’å…¥çš„ä½ç½®ï¼ˆæ’å…¥è¯¥ä½ç½®ä¹‹åï¼‰ï¼š");
             scanf("%d",&loc);
             for(i=0;i<loc-1;i++){
                 if(temp){
                     temp=temp->next;
                 }else{
-                    printf("¸ÃÎ»ÖÃ²»´æÔÚ£¨¿ÉÄÜÊÇÓÉÓÚÎ»ÖÃ³¤¶È´óÓÚÁ´±í³¤¶Èµ¼ÖÂµÄ£¡\n");
+                    printf("è¯¥ä½ç½®ä¸å­˜åœ¨ï¼ˆå¯èƒ½æ˜¯ç”±äºä½ç½®é•¿åº¦å¤§äºé“¾è¡¨é•¿åº¦å¯¼è‡´çš„ï¼\n");
                     return;
                 }
             }
             ptr->next=temp->next;
             temp->next=ptr;
-            printf("½áµãÒÑ²åÈë£¡\n");
+            printf("ç»“ç‚¹å·²æ’å…¥ï¼\n");
         }else{
-            printf("ÉêÇëÄÚ´æÊ§°Ü£¡");
+            printf("ç”³è¯·å†…å­˜å¤±è´¥ï¼");
         }
         break;
-    case 3://´Ó½áÎ²²åÈë
-        printf("ÇëÊäÈëÒª²åÈëµÄÊı¾İ£º");
+    case 3://ä»ç»“å°¾æ’å…¥
+        printf("è¯·è¾“å…¥è¦æ’å…¥çš„æ•°æ®ï¼š");
         scanf("%d",&data);
         ptr=(node *)malloc(sizeof(node *));
         ptr->data=data;
         if (ptr){
-            if(head){//Á´±í²»Îª¿Õ
+            if(head){//é“¾è¡¨ä¸ä¸ºç©º
                 node *temp=head;
                 while(temp->next!=NULL){
                     temp=temp->next;
                 }
                 temp->next=ptr;
                 ptr->next=NULL;
-                printf("½áµãÒÑ²åÈë£¡\n");
-            }else{//Á´±íÎª¿Õ
+                printf("ç»“ç‚¹å·²æ’å…¥ï¼\n");
+            }else{//é“¾è¡¨ä¸ºç©º
                 ptr->next=NULL;
                 head=ptr;
             }
         }else{
-            printf("ÉêÇëÄÚ´æÊ§°Ü£¡");
+            printf("ç”³è¯·å†…å­˜å¤±è´¥ï¼");
         }
-        printf("½áµãÒÑ²åÈë£¡\n");
+        printf("ç»“ç‚¹å·²æ’å…¥ï¼\n");
         break;
     default:
-        printf("ÊäÈëÓĞÎó£¬ÇëÖØĞÂÊäÈë£¡");
+        printf("è¾“å…¥æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
         insert_link();
         break;
     }
 }
-void delete_link(){//É¾³ı²Ù×÷
+void delete_link(){//åˆ é™¤æ“ä½œ
     int loc;
     int i;
     node *p;
-    printf("ÇëÊäÈëÄúÒªÉ¾³ı½áµãµÄÎ»ÖÃ(1:µÚÒ»¸ö,-1:×îºóÒ»¸ö,ÆäËû:ÖĞ¼äÎ»ÖÃ):\n");
+    printf("è¯·è¾“å…¥æ‚¨è¦åˆ é™¤ç»“ç‚¹çš„ä½ç½®(1:ç¬¬ä¸€ä¸ª,-1:æœ€åä¸€ä¸ª,å…¶ä»–:ä¸­é—´ä½ç½®):\n");
     scanf("%d",&loc);
     switch(loc){
     case 1:
         ptr=head;
         head=ptr->next;
         free(ptr);
-        printf("µÚÒ»¸ö½áµãÉ¾³ı³É¹¦£¡\n");
+        printf("ç¬¬ä¸€ä¸ªç»“ç‚¹åˆ é™¤æˆåŠŸï¼\n");
         break;
     case -1:
         if(head->next==NULL){
@@ -178,7 +178,7 @@ void delete_link(){//É¾³ı²Ù×÷
             p->next=NULL;
             free(ptr);
         }
-        printf("×îºóÒ»¸ö½áµãÉ¾³ı³É¹¦£¡\n");
+        printf("æœ€åä¸€ä¸ªç»“ç‚¹åˆ é™¤æˆåŠŸï¼\n");
         break;
     default:
         ptr=head;
@@ -186,33 +186,33 @@ void delete_link(){//É¾³ı²Ù×÷
             p=ptr;
             ptr=ptr->next;
             if(ptr==NULL){
-                printf("¸ÃÎ»ÖÃ²»´æÔÚ(¿ÉÄÜÊÇÓÉÓÚÎ»ÖÃ³¤¶È´óÓÚÁ´±í³¤¶Èµ¼ÖÂµÄ!\n");
+                printf("è¯¥ä½ç½®ä¸å­˜åœ¨(å¯èƒ½æ˜¯ç”±äºä½ç½®é•¿åº¦å¤§äºé“¾è¡¨é•¿åº¦å¯¼è‡´çš„!\n");
                 return;
             }
         }
         p->next=ptr->next;
         free(ptr);
-        printf("%d-th¸ö½áµãÉ¾³ı³É¹¦!\n",loc);
+        printf("%d-thä¸ªç»“ç‚¹åˆ é™¤æˆåŠŸ!\n",loc);
         break;
     }
 }
-void query_link(node *ptr,int data){//²éÕÒ²Ù×÷
+void query_link(node *ptr,int data){//æŸ¥æ‰¾æ“ä½œ
     int count=1;
     int flag=0;
     if (ptr==NULL){
-        printf("Á´±íÎª¿Õ!\n");
+        printf("é“¾è¡¨ä¸ºç©º!\n");
     }
     else{
         while(ptr!=NULL){
             if(ptr->data==data){
                 flag=1;
-                printf("¸ÃÊı×ÖÔÚÁ´±íÖĞµÄµÚ%d¸öÎ»ÖÃ...\n",count);
+                printf("è¯¥æ•°å­—åœ¨é“¾è¡¨ä¸­çš„ç¬¬%dä¸ªä½ç½®...\n",count);
             }
             ptr=ptr->next;
             count++;
         }
         if (!flag){
-            printf("¸ÃÊı×Ö²»ÔÚÁ´±íÖĞ£¡\n");
+            printf("è¯¥æ•°å­—ä¸åœ¨é“¾è¡¨ä¸­ï¼\n");
         }
     }
 }

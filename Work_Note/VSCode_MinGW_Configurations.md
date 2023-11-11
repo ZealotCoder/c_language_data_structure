@@ -1,46 +1,46 @@
-!!!ÖØÒªÌáĞÑ
-°´ÕÕÏÂÃæµÄÌáÊ¾½øĞĞÅäÖÃºó, ÎÒÃÇÔËĞĞlinked_list_struct\single_linked_list\single_linked_list.cºÍlinked_list_struct\single_linked_list\example.c
-È«¶¼±¨´í, ±¨´íÎ»ÖÃÎÒÔÚ´úÂë±ê×¢ÁË, ÊµÔÚÊÇÕÒ²»µ½Ô­Òò, ËùÒÔ,ÎÒ·ÅÆúÁË!!!TMD
+!!!é‡è¦æé†’
+æŒ‰ç…§ä¸‹é¢çš„æç¤ºè¿›è¡Œé…ç½®å, æˆ‘ä»¬è¿è¡Œlinked_list_struct\single_linked_list\single_linked_list.cå’Œlinked_list_struct\single_linked_list\example.c
+å…¨éƒ½æŠ¥é”™, æŠ¥é”™ä½ç½®æˆ‘åœ¨ä»£ç æ ‡æ³¨äº†, å®åœ¨æ˜¯æ‰¾ä¸åˆ°åŸå› , æ‰€ä»¥,æˆ‘æ”¾å¼ƒäº†!!!TMD
 
-È»ºóÉÏÃæµÄÁ½¸ö±¨´í, ÎÒ½«ÎÄ¼ş¿½±´µ½Linux ÏÂ, Õı³£ÔËĞĞ......
-ÎÒ×ªµ½VM&CentosÏÂÈ¥ÁË,
-ÔÙ¼û!!!
+ç„¶åä¸Šé¢çš„ä¸¤ä¸ªæŠ¥é”™, æˆ‘å°†æ–‡ä»¶æ‹·è´åˆ°Linux ä¸‹, æ­£å¸¸è¿è¡Œ......
+æˆ‘è½¬åˆ°VM&Centosä¸‹å»äº†,
+å†è§!!!
 
 
-¿ª·¢»·¾³Èí¼ş°æ±¾ËµÃ÷£º
+å¼€å‘ç¯å¢ƒè½¯ä»¶ç‰ˆæœ¬è¯´æ˜ï¼š
 OS: 
-    °æ±¾£ºWindows 10 ÆóÒµ°æ 
-    °æ±¾ºÅ£º22H2
-    ´¦ÀíÆ÷£º11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
+    ç‰ˆæœ¬ï¼šWindows 10 ä¼ä¸šç‰ˆ 
+    ç‰ˆæœ¬å·ï¼š22H2
+    å¤„ç†å™¨ï¼š11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
 
-VSCode£ºVisual Studio Code 1.84.1
+VSCodeï¼šVisual Studio Code 1.84.1
 MinGW:  x86_64-posix-seh-rev0, Built by MinGW-W64 project
-Git:    Git [Git.Git] °æ±¾ 2.42.0.2
+Git:    Git [Git.Git] ç‰ˆæœ¬ 2.42.0.2
 
-»·¾³ÅäÖÃ²½Öè£º
-1. °²×°VSCode
-2. °²×°MinGW
-3. °²×°Git
-4. ÅäÖÃVSCode & MinGW ¿ª·¢»·¾³²¢ÔËĞĞ »·¾³²âÊÔ´úÂë
-5. ´´½¨´úÂë²Ö¿â£¬ ²¢ÏòGitee ÍÆËÍ´úÂë
-6. »·¾³ÅäÖÃÍê³É
+ç¯å¢ƒé…ç½®æ­¥éª¤ï¼š
+1. å®‰è£…VSCode
+2. å®‰è£…MinGW
+3. å®‰è£…Git
+4. é…ç½®VSCode & MinGW å¼€å‘ç¯å¢ƒå¹¶è¿è¡Œ ç¯å¢ƒæµ‹è¯•ä»£ç 
+5. åˆ›å»ºä»£ç ä»“åº“ï¼Œ å¹¶å‘Gitee æ¨é€ä»£ç 
+6. ç¯å¢ƒé…ç½®å®Œæˆ
 
-Ïê½â²½Öè£º
-1. °²×°VScode£¬¹ı³Ì×ÔĞĞ°Ù¶È¡£²Î¿¼Á´½Ó£ºhttps://blog.csdn.net/weixin_43492780/article/details/119876493
-2. °²×°MinGW£¬¹ı³Ì×ÔĞĞ°Ù¶È¡£²Î¿¼Á´½Ó£ºhttps://blog.csdn.net/weixin_43492780/article/details/119876493
-    Çë×¢ÒâÅäÖÃMinGWµÄ»·¾³±äÁ¿£¡ÅäÖÃÍêÔÚWindows µÄcmdÖĞÊ¹ÓÃÒÔÏÂÃüÁî½øĞĞ¼ì²éÊÇ·ñ³É¹¦£¡
+è¯¦è§£æ­¥éª¤ï¼š
+1. å®‰è£…VScodeï¼Œè¿‡ç¨‹è‡ªè¡Œç™¾åº¦ã€‚å‚è€ƒé“¾æ¥ï¼šhttps://blog.csdn.net/weixin_43492780/article/details/119876493
+2. å®‰è£…MinGWï¼Œè¿‡ç¨‹è‡ªè¡Œç™¾åº¦ã€‚å‚è€ƒé“¾æ¥ï¼šhttps://blog.csdn.net/weixin_43492780/article/details/119876493
+    è¯·æ³¨æ„é…ç½®MinGWçš„ç¯å¢ƒå˜é‡ï¼é…ç½®å®Œåœ¨Windows çš„cmdä¸­ä½¿ç”¨ä»¥ä¸‹å‘½ä»¤è¿›è¡Œæ£€æŸ¥æ˜¯å¦æˆåŠŸï¼
         where gcc
         gcc --version
         g++ --version
         gdb --version
-3. ÅäÖÃVSCode & MinGWµÄ¿ª·¢»·¾³£¬£¨ÕâÊÇ±£Ö¤´úÂëÄÜ±àÒë²¢ÇÒ×îÖÕÅÜÆğÀ´£¬ µ«ÊÇËı²»»áÉú³ÉexeÎÄ¼ş£¬ ÎŞ·¨½øĞĞgdbµ÷ÊÔ£©
-    3.1 ´´½¨¿ÕÎÄ¼ş¼Ğ£¬ ²¢ÇÒÔÚVSCodeÖĞ´ò¿ª¸ÃÎÄ¼ş¼Ğ£¬ ´´½¨test.c ÎÄ¼ş£¬ 
-    3.2 ÔÚVScodeÖĞ Ctrl + Shift + P µ÷³öÃüÁîÃæ°å£¬ÊäÈë C/C++ £¬Ñ¡Ôñ Edit Configurations(UI) ½øÈë IntelliSenseÅäÖÃ
-        µã»÷c_cpp_properties.jsonÎÄ¼ş±Ò½øĞĞ±à¼­ÒÔÏÂÄÚÈİ£º
+3. é…ç½®VSCode & MinGWçš„å¼€å‘ç¯å¢ƒï¼Œï¼ˆè¿™æ˜¯ä¿è¯ä»£ç èƒ½ç¼–è¯‘å¹¶ä¸”æœ€ç»ˆè·‘èµ·æ¥ï¼Œ ä½†æ˜¯å¥¹ä¸ä¼šç”Ÿæˆexeæ–‡ä»¶ï¼Œ æ— æ³•è¿›è¡Œgdbè°ƒè¯•ï¼‰
+    3.1 åˆ›å»ºç©ºæ–‡ä»¶å¤¹ï¼Œ å¹¶ä¸”åœ¨VSCodeä¸­æ‰“å¼€è¯¥æ–‡ä»¶å¤¹ï¼Œ åˆ›å»ºtest.c æ–‡ä»¶ï¼Œ 
+    3.2 åœ¨VScodeä¸­ Ctrl + Shift + P è°ƒå‡ºå‘½ä»¤é¢æ¿ï¼Œè¾“å…¥ C/C++ ï¼Œé€‰æ‹© Edit Configurations(UI) è¿›å…¥ IntelliSenseé…ç½®
+        ç‚¹å‡»c_cpp_properties.jsonæ–‡ä»¶å¸è¿›è¡Œç¼–è¾‘ä»¥ä¸‹å†…å®¹ï¼š
             {
                 "configurations": [
                     {
-                        "name": "MinGW_C",      //CÓïÑÔ±àÒë»·¾³
+                        "name": "MinGW_C",      //Cè¯­è¨€ç¼–è¯‘ç¯å¢ƒ
                         "includePath": [
                             "c:/C_language_data_structure/**"
                         ],
@@ -56,7 +56,7 @@ Git:    Git [Git.Git] °æ±¾ 2.42.0.2
                         "intelliSenseMode": "gcc-x64"
                     },
                     {
-                        "name": "MinGW_CPP",        ////C++ÓïÑÔ±àÒë»·¾³
+                        "name": "MinGW_CPP",        ////C++è¯­è¨€ç¼–è¯‘ç¯å¢ƒ
                         "includePath": [
                             "${workspaceFolder}/**"
                         ],
@@ -75,14 +75,14 @@ Git:    Git [Git.Git] °æ±¾ 2.42.0.2
                 "version": 4
             }
 
-        ÅäÖÃ¹¹½¨ÈÎÎñ£¨ÕâÊÇÎªÁË·½±ãºó±ßµÄgdbµ÷ÊÔ£©
-            Ctrl+Shift+P µ÷³öÃüÁîÃæ°å£¬ÊäÈë tasks £¬Ñ¡Ôñ Tasks:Configure Default Build Task
-                Ñ¡Ôñ C/C++: g++.exe Éú³É»î¶¯ÎÄ¼ş£¬´ËÊ±»áÉú³É ***.exeÎÄ¼ş
+        é…ç½®æ„å»ºä»»åŠ¡ï¼ˆè¿™æ˜¯ä¸ºäº†æ–¹ä¾¿åè¾¹çš„gdbè°ƒè¯•ï¼‰
+            Ctrl+Shift+P è°ƒå‡ºå‘½ä»¤é¢æ¿ï¼Œè¾“å…¥ tasks ï¼Œé€‰æ‹© Tasks:Configure Default Build Task
+                é€‰æ‹© C/C++: g++.exe ç”Ÿæˆæ´»åŠ¨æ–‡ä»¶ï¼Œæ­¤æ—¶ä¼šç”Ÿæˆ ***.exeæ–‡ä»¶
                     {
                         "tasks": [
                             {
                                 "type": "cppbuild",
-                                "label": "C/C++: g++.exe Éú³É»î¶¯ÎÄ¼ş",
+                                "label": "C/C++: g++.exe ç”Ÿæˆæ´»åŠ¨æ–‡ä»¶",
                                 "command": "C:/mingw64/bin/g++.exe",
                                 "args": [
                                     "-fdiagnostics-color=always",
@@ -101,43 +101,43 @@ Git:    Git [Git.Git] °æ±¾ 2.42.0.2
                                     "kind": "build",
                                     "isDefault": true
                                 },
-                                "detail": "µ÷ÊÔÆ÷Éú³ÉµÄÈÎÎñ¡£"
+                                "detail": "è°ƒè¯•å™¨ç”Ÿæˆçš„ä»»åŠ¡ã€‚"
                             }
                         ],
                         "version": "2.0.0"
                     }
 
-        ÅäÖÃµ÷ÊÔÉèÖÃ
-            Ñ¡Ôñ ÔËĞĞ - Ìí¼ÓÅäÖÃ
-                Ñ¡Ôñ C++(GDB/LLDB)
-                    launch.jsonÎÄ¼ş£¬ÈôÎÄ¼şÄÚÈİÅäÖÃÎª¿Õ£¬µã»÷ÓÒÏÂ½ÇÌí¼ÓÅäÖÃ
+        é…ç½®è°ƒè¯•è®¾ç½®
+            é€‰æ‹© è¿è¡Œ - æ·»åŠ é…ç½®
+                é€‰æ‹© C++(GDB/LLDB)
+                    launch.jsonæ–‡ä»¶ï¼Œè‹¥æ–‡ä»¶å†…å®¹é…ç½®ä¸ºç©ºï¼Œç‚¹å‡»å³ä¸‹è§’æ·»åŠ é…ç½®
                         {
-                            // Ê¹ÓÃ IntelliSense ÁË½âÏà¹ØÊôĞÔ¡£ 
-                            // ĞüÍ£ÒÔ²é¿´ÏÖÓĞÊôĞÔµÄÃèÊö¡£
-                            // ÓûÁË½â¸ü¶àĞÅÏ¢£¬Çë·ÃÎÊ: https://go.microsoft.com/fwlink/?linkid=830387
+                            // ä½¿ç”¨ IntelliSense äº†è§£ç›¸å…³å±æ€§ã€‚ 
+                            // æ‚¬åœä»¥æŸ¥çœ‹ç°æœ‰å±æ€§çš„æè¿°ã€‚
+                            // æ¬²äº†è§£æ›´å¤šä¿¡æ¯ï¼Œè¯·è®¿é—®: https://go.microsoft.com/fwlink/?linkid=830387
                             "version": "0.2.0",
                             "configurations": [
 
                                 {
-                                    "name": "(gdb) Æô¶¯",
+                                    "name": "(gdb) å¯åŠ¨",
                                     "type": "cppdbg",
                                     "request": "launch",
-                                    "program": "${workspaceFolder}/test.exe",       //ÕâÀï¸Ä³ÉÉú³ÉµÄexeÎÄ¼şÃû
+                                    "program": "${workspaceFolder}/test.exe",       //è¿™é‡Œæ”¹æˆç”Ÿæˆçš„exeæ–‡ä»¶å
                                     "args": [],
                                     "stopAtEntry": false,
                                     "cwd": "${fileDirname}",
                                     "environment": [],
                                     "externalConsole": false,
                                     "MIMode": "gdb",
-                                    "miDebuggerPath": "C:/mingw64/bin/gdb.exe",     //ÕâÀï¸Ä³ÉminGWµÄ gdb.exeÎÄ¼şÂ·¾¶
+                                    "miDebuggerPath": "C:/mingw64/bin/gdb.exe",     //è¿™é‡Œæ”¹æˆminGWçš„ gdb.exeæ–‡ä»¶è·¯å¾„
                                     "setupCommands": [
                                         {
-                                            "description": "Îª gdb ÆôÓÃÕûÆë´òÓ¡",
+                                            "description": "ä¸º gdb å¯ç”¨æ•´é½æ‰“å°",
                                             "text": "-enable-pretty-printing",
                                             "ignoreFailures": true
                                         },
                                         {
-                                            "description": "½«·´»ã±à·ç¸ñÉèÖÃÎª Intel",
+                                            "description": "å°†åæ±‡ç¼–é£æ ¼è®¾ç½®ä¸º Intel",
                                             "text": "-gdb-set disassembly-flavor intel",
                                             "ignoreFailures": true
                                         }
@@ -146,7 +146,7 @@ Git:    Git [Git.Git] °æ±¾ 2.42.0.2
 
                             ]
                         }
-    ÖÁ´Ë£¬VSCode & MInGWµÄ¿ª·¢»·¾³ÅäÖÃÍê³ÉÁË£¬ ºóĞøÓĞ²¹³äµÄ»°£¬ÔÙ¸üĞÂ£¡£¡£¡
+    è‡³æ­¤ï¼ŒVSCode & MInGWçš„å¼€å‘ç¯å¢ƒé…ç½®å®Œæˆäº†ï¼Œ åç»­æœ‰è¡¥å……çš„è¯ï¼Œå†æ›´æ–°ï¼ï¼ï¼
 
-4. °²×°Git
-    ´Ó¹ÙÍøÏÂÔØÌ«ÂıÁË£¬ ÍÆ¼öÕâ¸ö¹úÄÚµÄÏÂÔØÕ¾£ºhttps://registry.npmmirror.com/binary.html?path=git-for-windows/
+4. å®‰è£…Git
+    ä»å®˜ç½‘ä¸‹è½½å¤ªæ…¢äº†ï¼Œ æ¨èè¿™ä¸ªå›½å†…çš„ä¸‹è½½ç«™ï¼šhttps://registry.npmmirror.com/binary.html?path=git-for-windows/

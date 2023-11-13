@@ -284,6 +284,28 @@ int singeled_Linked_List_Delete()
         case Linked_List_Mid_Node:
             {
                 /* code */
+                ptr = head;
+                struct Node* pre_Node = NULL;
+                unsigned int delete_Index = 0;
+                printf("请输入删除节点的位置:\n");
+                scanf("%u", &delete_Index);
+                int i = 0;
+                for ( i = 0; i < delete_Index -1 ; i++)
+                {
+                    pre_Node = ptr;
+                    ptr = ptr->next;
+                    if (ptr->next == NULL)
+                    {
+                        printf("您输入的位置不存在, 删除指点节点操作已结束!\n\n");
+                        return 0;
+                    }
+
+                }
+                if (ptr)
+                {
+                    pre_Node->next = ptr->next;
+                    free(ptr);
+                }
                 break;
             }
         case Linked_List_Tail_Node:

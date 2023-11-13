@@ -156,7 +156,7 @@ int singeled_Linked_List_Insert()
     unsigned int operation_Insert = 0;
     scanf("%u", &operation_Insert);
 
-    if (operation_Insert == 4;)
+    if (operation_Insert == 4)
     {
         printf("用户终止了链表节点插入操作!\n\n");
         return 0;

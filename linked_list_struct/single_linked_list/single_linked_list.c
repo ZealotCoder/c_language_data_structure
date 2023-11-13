@@ -260,9 +260,17 @@ int i = 0;
 int singeled_Linked_List_Delete()
 {
     printf("***********************链表节点删除开始!**************************\n");
-    printf("请选择刪除的节点的位置!(1:头部    2:指定位置    3:尾部)\n");
+    printf("请选择刪除的节点的位置!(1:头部    2:指定位置    3:尾部    4:终止节点删除)\n");
     unsigned int operation_Delete = 0;
     scanf("%d",&operation_Delete);
+
+    if (operation_Delete == 4)
+    {
+        printf("用户终止了删除节点操作!\n\n");
+        return 1;
+    }
+    
+
     switch (operation_Delete)
     {
         case Linked_List_HEAD_Node:

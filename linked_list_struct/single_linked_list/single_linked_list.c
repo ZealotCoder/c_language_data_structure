@@ -26,6 +26,7 @@ struct Node *ptr;
 #define FALSE 0
 
 unsigned int g_global_exit = 0;
+unsigned int g_global_IsInit = 0;
 
 int signeled_Linked_List_Init();
 int singeled_Linked_List_Insert();
@@ -115,6 +116,13 @@ int main()
 
 int signeled_Linked_List_Init()
 {
+    //判断链表初始化是否已经完成, 如果完成则无需再次初始化!
+    if (g_global_IsInit)
+    {
+        printf("链表初始化已经完成,请勿重复初始化链表\n");
+        return 1;
+    }
+    
     //链表初始化, 既是插入头结点
     printf("***********************链表节点初始化开始!**************************\n");
     ptr = (struct Node *)malloc(sizeof(struct Node *));
@@ -128,13 +136,14 @@ int signeled_Linked_List_Init()
     ptr->next = NULL;
     ptr->data_field_1 = 419010;
     head->next= ptr;
-
+    printf("***********************链表节点初始化正在进行......*******************\n");
     //插入一个数据
     ptr = (struct Node *)malloc(sizeof(struct Node*));
     ptr->next = NULL;
     ptr->data_field_1 = 416030;
     head->next->next = ptr;
     printf("***********************链表节点初始化结束!**************************\n");
+    g_global_IsInit = 1;
     return 0;
 }
 
@@ -142,7 +151,7 @@ int singeled_Linked_List_Insert()
 {
     printf("***********************链表节点插入开始!**************************\n");
 
-    printf("请选择数据插入位置!(1:头部    2:指定位置(指定位置的下一个节点)    3:尾部)\n");
+    printf("请选择数据插入位置!(1:头部    2:指定位置(指定位置的下一个节点)    3:尾部    4:终止插入操作)\n");
     unsigned int operation_Insert = 0;
     scanf("%u", &operation_Insert);
 
@@ -251,8 +260,8 @@ int singeled_Linked_List_Delete()
             {
                 ptr = head;
                 head = ptr->next;
-                free(ptr);  //奇怪的问题, 执行到这里, 就卡主了, 没有什么报错!!!
-                printf("删除第一个节点成功!\n");
+                free(ptr);  //奇怪的问题:VScode + MinGW 执行到这里, 就卡主了, 没有什么报错!!!
+                printf("删除节点成功!\n");
                 break;
             }
         case Linked_List_Mid_Node:

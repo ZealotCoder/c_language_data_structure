@@ -319,7 +319,7 @@ int singeled_Linked_List_Delete()
                     ptr = ptr->next;
                     if (ptr == NULL)
                     {
-                        printf("您输入的位置不存在, 删除指点节点操作已结束!\n\n");
+                        printf("您输入的位置不存在, 删除节点操作已结束!\n\n");
                         return 0;
                     }
 
@@ -358,6 +358,36 @@ int singeled_Linked_List_Delete()
 int signeled_Linked_List_Query()
 {
     printf("***********************链表节点查询开始!**************************\n");
+
+    if (head == NULL)
+    {
+        printf("链表为空!请先初始化链表或者加入新的数据!\n\n");
+        return 0;
+    }
+    
+    unsigned int target_Data = 0;
+    unsigned int targetData_Index  =0;
+    unsigned int targetData_find = 0; // 1 找到了, 0 没找到
+    printf("请输入想要查找的数据:\n");
+    scanf("%u",&target_Data);
+    ptr = head ;
+    while (ptr != NULL)
+    {
+        targetData_Index++;
+        if (ptr->data_field_1 == target_Data)
+        {
+            printf("你要找的数据 %d 位于链表的第 %u 个节点!\n", target_Data, targetData_Index );
+            targetData_find = 1;
+            break;
+        }
+        ptr = ptr->next;
+        
+    }
+    if (targetData_find == 0)
+    {
+        printf("你要找的数据 %d 在当前链表中没有找到!\n", target_Data, targetData_Index );
+    }
+    
     printf("***********************链表节点查询结束!**************************\n");
     return 0;
     

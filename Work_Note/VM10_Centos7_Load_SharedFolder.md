@@ -67,10 +67,12 @@ umount: /mnt/hgfs：目标忙。
 ```
 [root@localhost ~]# mount | grep "hgfs"
 vmhgfs-fuse on /mnt/hgfs type fuse.vmhgfs-fuse (rw,nosuid,nodev,relatime,user_id=0,group_id=0,allow_other)
-[root@localhost ~]# 
+[root@localhost ~]# \\
+
 ```
 
-#case4 验证重启是否能自动加载 挂载的共享文件
+#case4验证重启是否能自动加载 挂载的共享文件
+
 ```
 [test@localhost ~]$ ls -l /mnt/hgfs 
 ls: 无法访问/mnt/hgfs: 没有那个文件或目录

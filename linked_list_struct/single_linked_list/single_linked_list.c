@@ -270,6 +270,11 @@ int singeled_Linked_List_Delete()
         return 1;
     }
     
+    if (head == NULL)
+    {
+        printf("当前链表为空, 无法进行节点删除操作!\n\n");
+        return 1;
+    }
 
     switch (operation_Delete)
     {
@@ -278,9 +283,10 @@ int singeled_Linked_List_Delete()
                 ptr = head;
                 head = ptr->next;
                 free(ptr);  //奇怪的问题:VScode + MinGW 执行到这里, 就卡主了, 没有什么报错!!!
-                printf("删除节点成功!\n");
+                printf("删除头节点成功!\n");
                 break;
             }
+
         case Linked_List_Mid_Node:
             {
                 /* code */
@@ -289,6 +295,13 @@ int singeled_Linked_List_Delete()
                 unsigned int delete_Index = 0;
                 printf("请输入删除节点的位置:\n");
                 scanf("%u", &delete_Index);
+
+                if (delete_Index == 0)
+                {
+                    printf("您输入的位置不存在,删除指点节点操作已结束!\n\n");
+                    return 0;
+                }
+                
 
                 if (delete_Index == 1)
                 {
@@ -320,15 +333,25 @@ int singeled_Linked_List_Delete()
             }
         case Linked_List_Tail_Node:
             {
+                ptr = head;
+                struct Node* pre_Node = head;
+                while (ptr-> next != NULL)
+                {
+                    pre_Node = ptr;
+                    ptr = ptr->next;
+                }
+                pre_Node -> next = NULL;
+                free(ptr);
+                printf("删除尾节点成功!\n");
                 break;
             }
         default:
             {
-                /* code */
+                printf("用户输入无效! 删除节点操作已结束!\n\n");
                 break;
             }
     }
-    printf("***********************链表节点删除结束!**************************\n");
+    printf("***********************链表节点删除结束!**************************\n\n");
     return 0;
     
 }

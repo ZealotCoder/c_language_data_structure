@@ -22,7 +22,7 @@ CentOS 6已经随着2020年11月的结束进入了EOL（Reaches End of Life）�
 环境介绍:
 
 VM Workstations:
-VM work station:VMware? Workstation 10.0.7 build-2844087
+VM work station:VMware Workstation 10.0.7 build-2844087
 
 主机操作系统：
 Windows 10 家庭中文版

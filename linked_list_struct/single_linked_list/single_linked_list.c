@@ -119,7 +119,7 @@ int signeled_Linked_List_Init()
     //判断链表初始化是否已经完成, 如果完成则无需再次初始化!
     if (g_global_IsInit)
     {
-        printf("链表初始化已经完成,请勿重复初始化链表\n");
+        printf("链表初始化已经完成,请勿重复初始化链表\n\n");
         return 1;
     }
     
@@ -137,12 +137,13 @@ int signeled_Linked_List_Init()
     ptr->data_field_1 = 419010;
     head->next= ptr;
     printf("***********************链表节点初始化正在进行......*******************\n");
+
     //插入一个数据
     ptr = (struct Node *)malloc(sizeof(struct Node*));
     ptr->next = NULL;
     ptr->data_field_1 = 416030;
     head->next->next = ptr;
-    printf("***********************链表节点初始化结束!**************************\n");
+    printf("***********************链表节点初始化结束!**************************\n\n");
     g_global_IsInit = 1;
     return 0;
 }

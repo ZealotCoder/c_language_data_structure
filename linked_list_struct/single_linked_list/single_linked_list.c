@@ -410,10 +410,11 @@ int singeled_Linked_List_Print()
         printf("***********************链表节点打印结束!**************************\n\n");
         return 0;
     }
-    
+    unsigned int list_Index = 0;
     for ( ptr = head ; ptr != NULL ; ptr = ptr->next)
     {
-        printf("data_field_1 = %u\n", ptr->data_field_1);
+        list_Index++;
+        printf("第 %u 个节点数据段 data_field_1 = %u\n", list_Index , ptr->data_field_1);
     }
     
     printf("***********************链表节点打印结束!**************************\n\n");

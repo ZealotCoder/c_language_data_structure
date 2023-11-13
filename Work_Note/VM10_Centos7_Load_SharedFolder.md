@@ -16,6 +16,7 @@ centos系统:
 Linux version 3.10.0-1160.el7.x86_64 (mockbuild@kbuilder.bsys.centos.org) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC) ) #1 SMP Mon Oct 19 16:18:59 UTC 2020
 ```
 #case 1 共享文件挂载
+
 ##Windows系统
 创建一个空文件夹C:\Centos7_64_Study_SharedFolder
 ![](../assets/文件挂载1.png)

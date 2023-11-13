@@ -156,6 +156,14 @@ int singeled_Linked_List_Insert()
     unsigned int operation_Insert = 0;
     scanf("%u", &operation_Insert);
 
+    if (operation_Insert == 4;)
+    {
+        printf("用户终止了链表节点插入操作!\n\n");
+        return 0;
+
+    }
+    
+
     ptr = (struct Node *)malloc(sizeof(struct Node *));
     if (ptr)
     {
@@ -168,7 +176,7 @@ int singeled_Linked_List_Insert()
     }
     else
     {
-        printf("内存申请失败! 单链表数据插入中断!\n");
+        printf("内存申请失败! 单链表数据插入中断!\n\n");
         return 0;
     }
 
@@ -244,7 +252,7 @@ int i = 0;
             }
 
     }
-    printf("***********************链表节点插入结束!**************************\n");
+    printf("***********************链表节点插入结束!**************************\n\n");
     return 0;
     
 }

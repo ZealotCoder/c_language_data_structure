@@ -84,14 +84,18 @@ void  init()
         ptr->pre = NULL;
         ptr->next = NULL;
         head = ptr;
+
         ptr = (Node *)malloc(sizeof(Node));
         ptr->data_Filed = 9;
         ptr->next = head;
+        head->pre = ptr;
         ptr->pre = NULL;
         head = ptr;
+
         ptr = (Node *) malloc(sizeof(Node));
         ptr->data_Filed = 10;
         ptr->next = head;
+        head->pre = ptr;
         ptr->pre = NULL;
         head = ptr;
 
@@ -272,66 +276,84 @@ void search_link()
 
  void delete_link()
  {
-    int choice,i,loc;
-    printf("请输入要删除的位置(1:头结点;2:指定结点;3:尾结点)\n");
-    scanf("%d",&choice);
-    switch(choice){
-    case 1:
-        if(head){//链表不为空则进行操作
-            ptr=head;
-            head=head->next;
-            head->pre=NULL;
-            free(ptr);
-            printf("结点删除成功！\n");
-        }else{
-            printf("链表为空！\n");
-        }
-        break;
-    case 2:
-        if(head){
-            printf("请输入要删除结点的位置：");
-            scanf("%d",&loc);
-            Node *temp=head;
-            for(i=0;i<loc;i++){
-                if(temp->next){
-                    temp=temp->next;
-                }else{
-                    printf("该插入位置不存在（可能是由于输入位置大于链表长度导致的）！\n");
-                    return;
-                }
-            }
-            if(temp->next){
-                ptr=temp;
-                ptr->pre->next=ptr->next;
-                ptr->next->pre=ptr->pre;
-                free(ptr);
-            }else{
-                temp->pre->next=NULL;
-                free(temp);
-                printf("该结点为尾结点，已删除！\n");
-            }
-        }else{
-            printf("链表为空！\n");
-        }
-        break;
-    case 3:
-        if(head){
-            ptr=head;
-            while(ptr->next){
-                ptr=ptr->next;
-            }
-            ptr->pre->next=NULL;
-            free(ptr);
-            printf("结点删除成功！\n");
-        }else{
-            printf("链表为空！\n");
-        break;
-    default:
-        printf("输入有误，请重新输入！\n");
-        delete_link();
-        break;
-        }
-    }
-
-
- }
+     int choice, i, loc;
+     printf("请输入要删除的位置(1:头结点;2:指定结点;3:尾结点)\n");
+     scanf("%d", &choice);
+     switch (choice)
+     {
+     case 1:
+         if (head)
+         { // 链表不为空则进行操作
+             ptr = head;
+             head = head->next;
+             head->pre = NULL;
+             free(ptr);
+             printf("结点删除成功！\n");
+         }
+         else
+         {
+             printf("链表为空！\n");
+         }
+         break;
+     case 2:
+         if (head)
+         {
+             printf("请输入要删除结点的位置：");
+             scanf("%d", &loc);
+             Node *temp = head;
+             for (i = 0; i < loc; i++)
+             {
+                 if (temp->next)
+                 {
+                     temp = temp->next;
+                 }
+                 else
+                 {
+                     printf("该插入位置不存在（可能是由于输入位置大于链表长度导致的）！\n");
+                     return;
+                 }
+             }
+             if (temp->next)
+             {
+                 ptr = temp;
+                 ptr->pre->next = ptr->next;
+                 ptr->next->pre = ptr->pre;
+                 free(ptr);
+             }
+             else
+             {
+                 temp->pre->next = NULL;
+                 free(temp);
+                 printf("该结点为尾结点，已删除！\n");
+             }
+         }
+         else
+         {
+             printf("链表为空！\n");
+         }
+         break;
+     case 3:
+         if (head)
+         {
+             ptr = head;
+             while (ptr->next)
+             {
+                 ptr = ptr->next;
+             }
+             ptr->pre->next = NULL;
+             free(ptr);
+             printf("结点删除成功！\n");
+         }
+         else
+         {
+             printf("链表为空！\n");
+             break;
+         default:
+         {
+             printf("输入有误，请重新输入！\n");
+             // delete_link();
+             break;
+         }
+         }
+     }
+}

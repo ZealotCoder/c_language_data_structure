@@ -12,7 +12,7 @@ int main()
     return 0;
 }
 
-//C/C++ ÔÚvscode ÉÏ½YºÏ mingwß\ĞĞµÄÅäÖÃÎÄ¼ş
+//C/C++ åœ¨vscode ä¸Šçµåˆ mingwé‹è¡Œçš„é…ç½®æ–‡ä»¶
 //https://blog.csdn.net/qq_39236499/article/details/134147316
 //https://blog.csdn.net/baidu_38634017/article/details/99875321
 //https://blog.csdn.net/bigfresh_chy/article/details/112387788
@@ -22,9 +22,13 @@ int main()
 //https://blog.csdn.net/littlelittleR/article/details/121438006
 
 /*
-//½â¾ögitignore²»ÉúĞ§ÎÊÌâ
+//è§£å†³gitignoreä¸ç”Ÿæ•ˆé—®é¢˜
 git rm -r --cached .
 git add .
-git commit -m "update .gitignore"  // windowsÊ¹ÓÃµÄÃüÁîÊ±£¬ĞèÒªÊ¹ÓÃË«ÒıºÅ
+git commit -m "update .gitignore"  // windowsä½¿ç”¨çš„å‘½ä»¤æ—¶ï¼Œéœ€è¦ä½¿ç”¨åŒå¼•å·
 
 */
+
+
+
+//ä»£ç æµ‹è¯•æäº¤ï¼Œ ç¯å¢ƒæµ‹è¯•

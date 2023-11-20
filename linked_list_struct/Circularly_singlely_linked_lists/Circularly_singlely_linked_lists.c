@@ -14,7 +14,7 @@ void insert_link();
 void print_link();
 void search_link();
 void delete_link();
-void main()
+int main()
 {
     //printf("ÖĞÎÄÊä³ö²âÊÔ\n");
     init();

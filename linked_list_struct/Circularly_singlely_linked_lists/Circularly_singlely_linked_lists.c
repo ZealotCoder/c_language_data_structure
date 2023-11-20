@@ -81,9 +81,15 @@ void init()
 
     ptr = (ptr_Node)malloc(sizeof(Node));
     ptr->data_Filed = 10;
-    head->next = ptr;
     ptr->next = head;
-    
+    head->next = ptr;
+
+    ptr = (ptr_Node)malloc(sizeof(Node));
+    ptr->data_Filed = 10;
+    head->next->next = ptr;
+    ptr->next = head;
+
+
 };
 
 void insert_link()
@@ -93,6 +99,15 @@ void insert_link()
 
 void print_link()
 {
+    if (head)
+    {
+        /* code */
+        printf("循环单链表为空")
+    }
+    else
+    {
+        /* code */
+    }
     
 };
 

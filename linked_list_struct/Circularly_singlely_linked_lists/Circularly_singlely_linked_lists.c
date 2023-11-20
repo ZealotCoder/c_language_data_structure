@@ -102,12 +102,24 @@ void print_link()
     if (head)
     {
         /* code */
-        printf("循环单链表为空")
+        printf("循环单链表为空\n");
+        return ;
     }
     else
     {
         /* code */
+        ptr = head;
+        int count = 0;
+        while (ptr->next == head)
+        {
+            /* code */
+            count++;
+            printf("第%d个节点的数据是%d\n",count,ptr->data_Filed);
+             ptr = ptr->next;
+        }
+        
     }
+    return ;
     
 };
 

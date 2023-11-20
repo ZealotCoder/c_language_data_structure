@@ -69,3 +69,29 @@ void main()
 
 
 };
+
+
+void init()
+{
+
+};
+
+void insert_link()
+{
+    
+};
+
+void print_link()
+{
+    
+};
+
+void search_link()
+{
+    
+};
+
+void delete_link()
+{
+    
+};

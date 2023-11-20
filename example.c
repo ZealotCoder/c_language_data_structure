@@ -217,3 +217,4 @@ void query_link(node *ptr,int data){//查找操作
         }
     }
 }
+

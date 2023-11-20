@@ -132,8 +132,33 @@ void print_link()
 
 void search_link()
  {
-
-
+    ptr = head;
+    if (ptr == NULL)
+    {
+        printf("链表为空!\n");
+    }
+    int count = 0;
+    int target = 0;
+    printf("请输入要查找的数据:\n");
+    scanf("%d", &target);
+    while (ptr)
+    {
+        /* code */
+        count++;
+        if (target == ptr->data_Filed)
+        {
+            /* code */
+            printf("要查找的数据:%d位于链表第%d个节点\n",target,count);
+            break;
+        }
+        ptr = ptr->next;
+        if (ptr == NULL)
+        {
+            /* code */
+            printf("查找失败!\n");
+        }
+        
+    }
  }
 
  void delete_link()

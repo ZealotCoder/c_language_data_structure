@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 /*
 该文件代码用于实现单链表
 created time:2020.07.24

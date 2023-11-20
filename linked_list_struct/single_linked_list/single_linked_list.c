@@ -26,6 +26,7 @@ struct Node *ptr;
 #define FALSE 0
 
 unsigned int g_global_exit = 0;
+unsigned int g_global_IsInit = 0;
 
 int signeled_Linked_List_Init();
 int singeled_Linked_List_Insert();
@@ -115,6 +116,13 @@ int main()
 
 int signeled_Linked_List_Init()
 {
+    //判断链表初始化是否已经完成, 如果完成则无需再次初始化!
+    if (g_global_IsInit)
+    {
+        printf("链表初始化已经完成,请勿重复初始化链表\n\n");
+        return 1;
+    }
+    
     //链表初始化, 既是插入头结点
     printf("***********************链表节点初始化开始!**************************\n");
     ptr = (struct Node *)malloc(sizeof(struct Node *));
@@ -128,13 +136,15 @@ int signeled_Linked_List_Init()
     ptr->next = NULL;
     ptr->data_field_1 = 419010;
     head->next= ptr;
+    printf("***********************链表节点初始化正在进行......*******************\n");
 
     //插入一个数据
     ptr = (struct Node *)malloc(sizeof(struct Node*));
     ptr->next = NULL;
     ptr->data_field_1 = 416030;
     head->next->next = ptr;
-    printf("***********************链表节点初始化结束!**************************\n");
+    printf("***********************链表节点初始化结束!**************************\n\n");
+    g_global_IsInit = 1;
     return 0;
 }
 
@@ -142,9 +152,17 @@ int singeled_Linked_List_Insert()
 {
     printf("***********************链表节点插入开始!**************************\n");
 
-    printf("请选择数据插入位置!(1:头部    2:指定位置(指定位置的下一个节点)    3:尾部)\n");
+    printf("请选择数据插入位置!(1:头部    2:指定位置(指定位置的下一个节点)    3:尾部    4:终止插入操作)\n");
     unsigned int operation_Insert = 0;
     scanf("%u", &operation_Insert);
+
+    if (operation_Insert == 4)
+    {
+        printf("用户终止了链表节点插入操作!\n\n");
+        return 0;
+
+    }
+    
 
     ptr = (struct Node *)malloc(sizeof(struct Node *));
     if (ptr)
@@ -155,10 +173,12 @@ int singeled_Linked_List_Insert()
         scanf("%u",&data_Field);
         ptr->data_field_1 = data_Field;
         ptr->next = NULL;
+        g_global_IsInit = 1;
     }
     else
     {
-        printf("内存申请失败! 单链表数据插入中断!\n");
+        printf("内存申请失败! 单链表数据插入中断!\n\n");
+        g_global_IsInit = 0;
         return 0;
     }
 
@@ -177,6 +197,7 @@ int singeled_Linked_List_Insert()
                     ptr->next = head;
                     head = ptr;
                 }
+                g_global_IsInit = 1;
                 break;
             }
         case Linked_List_Mid_Node:     //链表指定位置插入
@@ -185,7 +206,7 @@ int singeled_Linked_List_Insert()
                 printf("请输入节点位置:\n");
                 scanf("%u",&target_index);//
                 struct Node *temp = head;
-int i = 0;
+                int i = 0;
                 for (i = 0; i < target_index-1; i++)
                 {
                     // 这里是为了找到第target_index个节点, 然后将新节点当做target_index节点的下一个节点, 新节点的next指向原本target_index节点的next;
@@ -202,7 +223,7 @@ int i = 0;
                 }
                 ptr->next = temp->next;
                 temp->next = ptr;
-
+                g_global_IsInit = 1;
                 break;
             }
         case Linked_List_Tail_Node:     //链表尾部插入
@@ -225,16 +246,18 @@ int i = 0;
                     }
                     temp->next = ptr;
                 }
+                g_global_IsInit = 1;
                 break;
             }
         default:
             {
                 printf("插入位置选择无效! 节点插入操作被中断!\n");
+                g_global_IsInit = 0;
                 break;
             }
 
     }
-    printf("***********************链表节点插入结束!**************************\n");
+    printf("***********************链表节点插入结束!**************************\n\n");
     return 0;
     
 }
@@ -242,41 +265,134 @@ int i = 0;
 int singeled_Linked_List_Delete()
 {
     printf("***********************链表节点删除开始!**************************\n");
-    printf("请选择刪除的节点的位置!(1:头部    2:指定位置    3:尾部)\n");
+    printf("请选择刪除的节点的位置!(1:头部    2:指定位置    3:尾部    4:终止节点删除)\n");
     unsigned int operation_Delete = 0;
     scanf("%d",&operation_Delete);
+
+    if (operation_Delete == 4)
+    {
+        printf("用户终止了删除节点操作!\n\n");
+        return 1;
+    }
+    
+    if (head == NULL)
+    {
+        printf("当前链表为空, 无法进行节点删除操作!\n\n");
+        return 1;
+    }
+
     switch (operation_Delete)
     {
         case Linked_List_HEAD_Node:
             {
                 ptr = head;
                 head = ptr->next;
-                free(ptr);  //奇怪的问题, 执行到这里, 就卡主了, 没有什么报错!!!
-                printf("删除第一个节点成功!\n");
+                free(ptr);  //奇怪的问题:VScode + MinGW 执行到这里, 就卡主了, 没有什么报错!!!
+                printf("删除头节点成功!\n");
                 break;
             }
+
         case Linked_List_Mid_Node:
             {
                 /* code */
+                ptr = head;
+                struct Node* pre_Node = head;
+                unsigned int delete_Index = 0;
+                printf("请输入删除节点的位置:\n");
+                scanf("%u", &delete_Index);
+
+                if (delete_Index == 0)
+                {
+                    printf("您输入的位置不存在,删除指点节点操作已结束!\n\n");
+                    return 0;
+                }
+                
+
+                if (delete_Index == 1)
+                {
+                    ptr = head;
+                    head = ptr->next;
+                    free(ptr);  //奇怪的问题:VScode + MinGW 执行到这里, 就卡主了, 没有什么报错!!!
+                    printf("删除节点成功!\n");
+                    break;
+                }
+                
+                int i = 0;
+                for ( i = 0; i < delete_Index -1 ; i++)
+                {
+                    pre_Node = ptr;
+                    ptr = ptr->next;
+                    if (ptr == NULL)
+                    {
+                        printf("您输入的位置不存在, 删除节点操作已结束!\n\n");
+                        return 0;
+                    }
+
+                }
+                if (ptr)
+                {
+                    pre_Node->next = ptr->next;
+                    free(ptr);
+                }
                 break;
             }
         case Linked_List_Tail_Node:
             {
+                ptr = head;
+                struct Node* pre_Node = head;
+                while (ptr-> next != NULL)
+                {
+                    pre_Node = ptr;
+                    ptr = ptr->next;
+                }
+                pre_Node -> next = NULL;
+                free(ptr);
+                printf("删除尾节点成功!\n");
                 break;
             }
         default:
             {
-                /* code */
+                printf("用户输入无效! 删除节点操作已结束!\n\n");
                 break;
             }
     }
-    printf("***********************链表节点删除结束!**************************\n");
+    printf("***********************链表节点删除结束!**************************\n\n");
     return 0;
     
 }
 int signeled_Linked_List_Query()
 {
     printf("***********************链表节点查询开始!**************************\n");
+
+    if (head == NULL)
+    {
+        printf("链表为空!请先初始化链表或者加入新的数据!\n\n");
+        return 0;
+    }
+    
+    unsigned int target_Data = 0;
+    unsigned int targetData_Index  =0;
+    unsigned int targetData_find = 0; // 1 找到了, 0 没找到
+    printf("请输入想要查找的数据:\n");
+    scanf("%u",&target_Data);
+    ptr = head ;
+    while (ptr != NULL)
+    {
+        targetData_Index++;
+        if (ptr->data_field_1 == target_Data)
+        {
+            printf("你要找的数据 %d 位于链表的第 %u 个节点!\n", target_Data, targetData_Index );
+            targetData_find = 1;
+            break;
+        }
+        ptr = ptr->next;
+        
+    }
+    if (targetData_find == 0)
+    {
+        printf("你要找的数据 %d 在当前链表中没有找到!\n", target_Data, targetData_Index );
+    }
+    
     printf("***********************链表节点查询结束!**************************\n");
     return 0;
     
@@ -285,7 +401,40 @@ int signeled_Linked_List_Query()
 int singeled_Linked_List_Edit()
 {
     printf("***********************链表节点编辑开始!**************************\n");
-    printf("***********************链表节点编辑结束!**************************\n");
+    if (g_global_IsInit == 0 || head == NULL)
+    {
+        printf("链表暂未初始化 或者 数据为空, 请先添加数据!\n\n");
+        return 0;
+    }
+
+    unsigned int target_Index = 0;
+    unsigned int new_Data = 0;
+    unsigned int targetIndex_Find = 0; // 1 找到了指定位置,修改成功    ;          0 没找到指定位置, 修改失败
+    printf("请输入你想修改的节点的序号:\n");
+    scanf("%u", &target_Index);
+    printf("请输入节点的新数据:\n");
+    scanf("%u", &new_Data);
+    ptr = head;
+
+    int i = 0;
+    while (ptr != NULL)
+    {
+        i++;
+        if (i == target_Index)
+        {
+            printf("链表第 %u 个节点 数据域 从 %u 修改为 %u \n\n", target_Index, ptr->data_field_1, new_Data);
+            ptr->data_field_1 = new_Data;
+            targetIndex_Find = 1;
+        }
+        
+        ptr = ptr->next;
+    }
+    
+    if (targetIndex_Find == 0)
+    {
+        printf("用户想要修改的链表第 %u 个节点不存在! 请先确认数据的有效性!\n", target_Index);
+    }
+    printf("***********************链表节点编辑结束!**************************\n\n");
     return 0;
     
 }
@@ -299,10 +448,11 @@ int singeled_Linked_List_Print()
         printf("***********************链表节点打印结束!**************************\n\n");
         return 0;
     }
-    
+    unsigned int list_Index = 0;
     for ( ptr = head ; ptr != NULL ; ptr = ptr->next)
     {
-        printf("data_field_1 = %u\n", ptr->data_field_1);
+        list_Index++;
+        printf("第 %u 个节点数据段 data_field_1 = %u\n", list_Index , ptr->data_field_1);
     }
     
     printf("***********************链表节点打印结束!**************************\n\n");
@@ -313,6 +463,25 @@ int singeled_Linked_List_Print()
 int singeled_Linked_List_Destroy()
 {
     printf("链表删除完成!\n");
+#if 0       //还没想好怎么一次性删除整个链表
+    if (head == NULL || g_global_IsInit == 0)
+    {
+        printf("链表暂未初始化 或者 数据为空, 请先添加数据!\n\n");
+        return 0;
+    }
+
+    ptr = head;
+    unsigned int node_Num = 0;
+    struct Node* tail_Node = NULL;
+    while (ptr!= NULL )
+    {
+        ptr = ptr->next;
+        node_Num++;
+    }
+    //free(head,head+node_Num));
+    
+#endif
+    printf("还没想好怎么一次性删除整个链表,所以这里没实现!\n\n");
     return 0; 
 }
 

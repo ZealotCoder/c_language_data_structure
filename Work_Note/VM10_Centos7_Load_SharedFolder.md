@@ -1,9 +1,9 @@
 
-问题背景:
+# 问题背景:
 我想在Windows系统上编辑代码文件, 然后再虚拟机上实现编译和运行代码.
 
 
-环境介绍:
+# 环境介绍:
 VM Workstations:
 VM work station:VMware? Workstation 10.0.7 build-2844087
 
@@ -15,16 +15,18 @@ centos系统:
 [test@localhost ~]$ cat /proc/version 
 Linux version 3.10.0-1160.el7.x86_64 (mockbuild@kbuilder.bsys.centos.org) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC) ) #1 SMP Mon Oct 19 16:18:59 UTC 2020
 ```
-#case 1 共享文件挂载
-##Windows系统
+
+# case 1 共享文件挂载
+
+## Windows系统
 创建一个空文件夹C:\Centos7_64_Study_SharedFolder
 ![](../assets/文件挂载1.png)
 
-##VM WorkStations
+## VM WorkStations
 设置虚拟机的共享文件目录和文件名
 ![](../assets/文件挂载2.png)
 
-##Centos7
+## Centos7
 ```
 [test@localhost ~]$ ls -l /mnt/
 总用量 0
@@ -43,7 +45,7 @@ drwxrwxrwx. 1 root root 4096 11月 11 11:45 Centos7_64_Study_SharedFolder
 
 ```
 
-#case2 取消共享文件挂载
+# case2 取消共享文件挂载
 ```
 [root@localhost ~]# 
 [root@localhost ~]# umount /mnt/hgfs/       //这里碰到了一个坑,解决办法看下面的第四节第一小节
@@ -63,14 +65,16 @@ umount: /mnt/hgfs：目标忙。
 [root@localhost test]# 
 ```
 
-#case3 查看挂载的共享文件
+# case3 查看挂载的共享文件
 ```
 [root@localhost ~]# mount | grep "hgfs"
 vmhgfs-fuse on /mnt/hgfs type fuse.vmhgfs-fuse (rw,nosuid,nodev,relatime,user_id=0,group_id=0,allow_other)
-[root@localhost ~]# 
+[root@localhost ~]# \\
+
 ```
 
-#case4 验证重启是否能自动加载 挂载的共享文件
+# case4验证重启是否能自动加载 挂载的共享文件
+
 ```
 [test@localhost ~]$ ls -l /mnt/hgfs 
 ls: 无法访问/mnt/hgfs: 没有那个文件或目录
@@ -112,7 +116,7 @@ drwxrwxrwx. 1 root root 4096 11月 11 11:45 Centos7_64_Study_SharedFolder
 
 ```
 
-#case4 坑!
+# case4 坑!
 ## umount: /mnt/hgfs：目标忙。
 ```
 [root@localhost ~]# 
@@ -146,7 +150,7 @@ bash    3920 test  cwd    DIR   0,39     4096    1 /mnt/hgfs
 
 ```
 
-##ls 无法访问挂载的文件/ 挂载失败bad mount point
+## ls 无法访问挂载的文件/ 挂载失败bad mount point
 ```
 [test@localhost mnt]$ ls -l
 

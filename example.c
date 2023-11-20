@@ -47,7 +47,7 @@ void main(){
         }
     }
 }
-void init(){//初始化
+void init(){//初始�?
     ptr=(node *)malloc(sizeof(node *));
     ptr->data=1;
     ptr->next=NULL;
@@ -72,7 +72,7 @@ void print_link(node *ptr){
     }
     else{
         while(ptr!=NULL){
-            printf("%d-th结点的值:%d\n",count,ptr->data);
+            printf("%d-th结点的�?:%d\n",count,ptr->data);
             ptr=ptr->next;
             count++;
         }
@@ -81,23 +81,23 @@ void print_link(node *ptr){
 void insert_link(){//插入操作
     int data=0;
     int choice;
-    printf("请输入插入位置(1:开头,2:中间,3:结尾):\n");
+    printf("请输入插入位�?(1:开�?,2:中间,3:结尾):\n");
     scanf("%d",&choice);
     switch(choice){
-    case 1://从开始插入
+    case 1://从开始插�?
         printf("请输入要插入的数据：");
         scanf("%d",&data);
         ptr=(node *)malloc(sizeof(node *));
         if (ptr){
-            ptr->data=data;//为插入结点赋值
+            ptr->data=data;//为插入结点赋�?
             ptr->next=head;//将新结点链接到原始结点的头上
             head=ptr;//更换链表的头
             printf("结点已插入！\n");
         }else{
-            printf("申请内存失败！");
+            printf("申请内存失败�?");
         }
         break;
-    case 2://从中间插入
+    case 2://从中间插�?
         printf("请输入要插入的数据：");
         scanf("%d",&data);
         ptr=(node *)malloc(sizeof(node *));
@@ -105,7 +105,7 @@ void insert_link(){//插入操作
         if(ptr){
             int loc,i;
             node *temp=head;
-            printf("请输入要插入的位置（插入该位置之后）：");
+            printf("请输入要插入的位置（插入该位置之后）�?");
             scanf("%d",&loc);
             for(i=0;i<loc-1;i++){
                 if(temp){
@@ -119,16 +119,16 @@ void insert_link(){//插入操作
             temp->next=ptr;
             printf("结点已插入！\n");
         }else{
-            printf("申请内存失败！");
+            printf("申请内存失败�?");
         }
         break;
-    case 3://从结尾插入
+    case 3://从结尾插�?
         printf("请输入要插入的数据：");
         scanf("%d",&data);
         ptr=(node *)malloc(sizeof(node *));
         ptr->data=data;
         if (ptr){
-            if(head){//链表不为空
+            if(head){//链表不为�?
                 node *temp=head;
                 while(temp->next!=NULL){
                     temp=temp->next;
@@ -141,12 +141,12 @@ void insert_link(){//插入操作
                 head=ptr;
             }
         }else{
-            printf("申请内存失败！");
+            printf("申请内存失败�?");
         }
         printf("结点已插入！\n");
         break;
     default:
-        printf("输入有误，请重新输入！");
+        printf("输入有误，请重新输入�?");
         insert_link();
         break;
     }
@@ -155,7 +155,7 @@ void delete_link(){//删除操作
     int loc;
     int i;
     node *p;
-    printf("请输入您要删除结点的位置(1:第一个,-1:最后一个,其他:中间位置):\n");
+    printf("请输入您要删除结点的位置(1:第一�?,-1:最后一�?,其他:中间位置):\n");
     scanf("%d",&loc);
     switch(loc){
     case 1:
@@ -192,7 +192,7 @@ void delete_link(){//删除操作
         }
         p->next=ptr->next;
         free(ptr);
-        printf("%d-th个结点删除成功!\n",loc);
+        printf("%d-th个结点删除成�?!\n",loc);
         break;
     }
 }
@@ -206,7 +206,7 @@ void query_link(node *ptr,int data){//查找操作
         while(ptr!=NULL){
             if(ptr->data==data){
                 flag=1;
-                printf("该数字在链表中的第%d个位置...\n",count);
+                printf("该数字在链表中的�?%d个位�?...\n",count);
             }
             ptr=ptr->next;
             count++;
@@ -216,3 +216,4 @@ void query_link(node *ptr,int data){//查找操作
         }
     }
 }
+

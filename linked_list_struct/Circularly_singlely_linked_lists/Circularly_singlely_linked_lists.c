@@ -5,8 +5,9 @@ typedef struct Node{
     //数据域
     int data_Filed;
     struct Node *next;
-}Node;
-Node *ptr,*head,*tail;
+}Node,*ptr_Node;
+
+Node *ptr,*head;
 
 void init();
 void insert_link();
@@ -18,7 +19,7 @@ void main()
     //printf("中文输出测试\n");
     init();
     unsigned int operation = 0;
-    printf("\t\t\t\t欢迎来到循环双链表学习部分!\t\t\t\t\n\n");
+    printf("\t\t\t\t欢迎来到循环单链表学习部分!\t\t\t\t\n\n");
     do
     {
         printf("\t\t\t\t1.插入:\t\t\t\t\n");
@@ -73,7 +74,16 @@ void main()
 
 void init()
 {
+    ptr = (ptr_Node)malloc(sizeof(Node));
+    ptr->data_Filed = 1;
+    ptr->next = ptr;
+    head = ptr;
 
+    ptr = (ptr_Node)malloc(sizeof(Node));
+    ptr->data_Filed = 10;
+    head->next = ptr;
+    ptr->next = head;
+    
 };
 
 void insert_link()

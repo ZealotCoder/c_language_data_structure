@@ -3,7 +3,7 @@
 
 typedef struct Node{
     struct Node *pre;
-    //Êı¾İÓò
+    //æ•°æ®åŸŸ
     int data_Filed;
     struct Node *next;
 }Node;
@@ -16,18 +16,18 @@ void search_link();
 void delete_link();
 void main()
 {
-    //printf("ÖĞÎÄÊä³ö²âÊÔ\n");
+    //printf("ä¸­æ–‡è¾“å‡ºæµ‹è¯•\n");
     init();
     unsigned int operation = 0;
-    printf("\t\t\t\t»¶Ó­À´µ½Ñ­»·Ë«Á´±íÑ§Ï°²¿·Ö!\t\t\t\t\n\n");
+    printf("\t\t\t\tæ¬¢è¿æ¥åˆ°å¾ªç¯åŒé“¾è¡¨å­¦ä¹ éƒ¨åˆ†!\t\t\t\t\n\n");
     do
     {
-        printf("\t\t\t\t1.²åÈë:\t\t\t\t\n");
-        printf("\t\t\t\t2.É¾³ı:\t\t\t\t\n");
-        printf("\t\t\t\t3.²éÕÒ:\t\t\t\t\n");
-        printf("\t\t\t\t4.Õ¹Ê¾:\t\t\t\t\n");
-        printf("\t\t\t\t5.ÍË³ö:\t\t\t\t\n");
-        printf("\t\t\t\tÇëÑ¡ÔñÄãµÄ²Ù×÷:\t\t\t\t\n");
+        printf("\t\t\t\t1.æ’å…¥:\t\t\t\t\n");
+        printf("\t\t\t\t2.åˆ é™¤:\t\t\t\t\n");
+        printf("\t\t\t\t3.æŸ¥æ‰¾:\t\t\t\t\n");
+        printf("\t\t\t\t4.å±•ç¤º:\t\t\t\t\n");
+        printf("\t\t\t\t5.é€€å‡º:\t\t\t\t\n");
+        printf("\t\t\t\tè¯·é€‰æ‹©ä½ çš„æ“ä½œ:\t\t\t\t\n");
         scanf("%u",&operation);
         switch (operation)
         {
@@ -53,12 +53,12 @@ void main()
                 }
             case 5:
                 {
-                    printf("\t\t\t\tÍË³ö!\t\t\t\t\n");
+                    printf("\t\t\t\té€€å‡º!\t\t\t\t\n");
                     exit(0);
                 }
             default:
                 {
-                    printf("ÊäÈë·Ç·¨,ÇëÖØĞÂÊäÈë!\n");
+                    printf("è¾“å…¥éæ³•,è¯·é‡æ–°è¾“å…¥!\n");
                     break;
                 }
         }

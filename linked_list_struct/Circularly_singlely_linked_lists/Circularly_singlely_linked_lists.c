@@ -2,12 +2,14 @@
 #include <stdio.h>
 
 typedef struct Node{
-    //Êı¾İÓò
+    //æ•°æ®åŸŸ
     int data_Filed;
     struct Node *next;
 }Node,*ptr_Node;
 
-Node *ptr,*head;
+Node *ptr;
+Node *head;
+Node *tail;
 
 void init();
 void insert_link();
@@ -16,18 +18,18 @@ void search_link();
 void delete_link();
 int main()
 {
-    //printf("ÖĞÎÄÊä³ö²âÊÔ\n");
+    //printf("ä¸­æ–‡è¾“å‡ºæµ‹è¯•\n");
     init();
     unsigned int operation = 0;
-    printf("\t\t\t\t»¶Ó­À´µ½Ñ­»·µ¥Á´±íÑ§Ï°²¿·Ö!\t\t\t\t\n\n");
+    printf("\t\t\t\tæ¬¢è¿æ¥åˆ°å¾ªç¯å•é“¾è¡¨å­¦ä¹ éƒ¨åˆ†!\t\t\t\t\n\n");
     do
     {
-        printf("\t\t\t\t1.²åÈë:\t\t\t\t\n");
-        printf("\t\t\t\t2.É¾³ı:\t\t\t\t\n");
-        printf("\t\t\t\t3.²éÕÒ:\t\t\t\t\n");
-        printf("\t\t\t\t4.Õ¹Ê¾:\t\t\t\t\n");
-        printf("\t\t\t\t5.ÍË³ö:\t\t\t\t\n");
-        printf("\t\t\t\tÇëÑ¡ÔñÄãµÄ²Ù×÷:\t\t\t\t\n");
+        printf("\t\t\t\t1.æ’å…¥:\t\t\t\t\n");
+        printf("\t\t\t\t2.åˆ é™¤:\t\t\t\t\n");
+        printf("\t\t\t\t3.æŸ¥æ‰¾:\t\t\t\t\n");
+        printf("\t\t\t\t4.å±•ç¤º:\t\t\t\t\n");
+        printf("\t\t\t\t5.é€€å‡º:\t\t\t\t\n");
+        printf("\t\t\t\tè¯·é€‰æ‹©ä½ çš„æ“ä½œ:\t\t\t\t\n");
         scanf("%u",&operation);
         switch (operation)
         {
@@ -53,12 +55,12 @@ int main()
                 }
             case 5:
                 {
-                    printf("\t\t\t\tÍË³ö!\t\t\t\t\n");
+                    printf("\t\t\t\té€€å‡º!\t\t\t\t\n");
                     exit(0);
                 }
             default:
                 {
-                    printf("ÊäÈë·Ç·¨,ÇëÖØĞÂÊäÈë!\n");
+                    printf("è¾“å…¥éæ³•,è¯·é‡æ–°è¾“å…¥!\n");
                     break;
                 }
         }
@@ -78,16 +80,20 @@ void init()
     ptr->data_Filed = 1;
     ptr->next = ptr;
     head = ptr;
+    //tail = ptr;
 
     ptr = (ptr_Node)malloc(sizeof(Node));
     ptr->data_Filed = 10;
-    ptr->next = head;
     head->next = ptr;
+    ptr->next = head;
+    //tail->next= ptr;
+
 
     ptr = (ptr_Node)malloc(sizeof(Node));
-    ptr->data_Filed = 10;
-    head->next->next = ptr;
+    ptr->data_Filed = 100;
     ptr->next = head;
+    head->next->next = ptr;
+    //tail->next = ptr;
 
 
 };
@@ -99,10 +105,10 @@ void insert_link()
 
 void print_link()
 {
-    if (head)
+    if (head == NULL)
     {
         /* code */
-        printf("Ñ­»·µ¥Á´±íÎª¿Õ\n");
+        printf("å¾ªç¯å•é“¾è¡¨ä¸ºç©º\n");
         return ;
     }
     else
@@ -110,13 +116,14 @@ void print_link()
         /* code */
         ptr = head;
         int count = 0;
-        while (ptr->next == head)
+        while (ptr->next != head)
         {
             /* code */
             count++;
-            printf("µÚ%d¸ö½ÚµãµÄÊı¾İÊÇ%d\n",count,ptr->data_Filed);
+            printf("ç¬¬%dä¸ªèŠ‚ç‚¹çš„æ•°æ®æ˜¯%d\n",count,ptr->data_Filed);
              ptr = ptr->next;
         }
+        printf("ç¬¬%dä¸ªèŠ‚ç‚¹çš„æ•°æ®æ˜¯%d\n",count++,ptr->data_Filed);
         
     }
     return ;

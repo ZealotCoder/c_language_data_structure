@@ -73,7 +73,31 @@ int main()
 
 void  init()
 {
+    if (head)
+    {
+        /* code */
+    }
+    else
+    {
+        /* code */
+        ptr = (Node *)malloc(sizeof(Node));
+        ptr->data_Filed = 3;
+        ptr->pre = NULL;
+        ptr->next = NULL;
+        head = ptr;
+        ptr = (Node *)malloc(sizeof(Node));
+        ptr->data_Filed = 9;
+        ptr->next = head;
+        ptr->pre = NULL;
+        head = ptr;
+        ptr = (Node *) malloc(sizeof(Node));
+        ptr->data_Filed = 10;
+        ptr->next = head;
+        ptr->pre = NULL;
+        head = ptr;
 
+    }
+    
 
 
 
@@ -87,7 +111,22 @@ void insert_link()
 
 void print_link()
 {
-
+    if (head == NULL)
+    {
+        /* code */
+        printf("链表为空!");
+    }
+    int count = 0;
+    ptr = head;
+    while (ptr)
+    {
+        /* code */
+        count++;
+        printf("第%d个节点数据是:%d\n",count, ptr->data_Filed);
+        ptr = ptr->next;
+    }
+    
+    
 
 }
 
